@@ -39,33 +39,14 @@ export default function CustomersAdmin() {
     <div className="space-y-8 text-zinc-100">
       {/* 1. Header & Quick Analytics */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-lg flex items-center justify-between">
+        <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-lg flex items-center justify-between sm:col-span-3">
           <div className="space-y-1">
             <p className="text-[10px] uppercase font-bold text-zinc-400 font-mono">Total Directory Clients</p>
             <h3 className="font-serif text-2xl font-bold text-zinc-100">{customers.length}</h3>
+            <p className="text-[9px] text-zinc-500">Registered users who have active profiles in the pet care ecosystem.</p>
           </div>
-          <div className="h-10 w-10 rounded-md bg-zinc-800 border border-zinc-700 flex items-center justify-center text-primary">
-            <Users className="h-5 w-5" />
-          </div>
-        </div>
-
-        <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-lg flex items-center justify-between">
-          <div className="space-y-1">
-            <p className="text-[10px] uppercase font-bold text-zinc-400 font-mono">Cumulative Sales Value</p>
-            <h3 className="font-serif text-2xl font-bold text-zinc-100">₹{totalSpentAll.toLocaleString('en-IN')}</h3>
-          </div>
-          <div className="h-10 w-10 rounded-md bg-zinc-800 border border-zinc-700 flex items-center justify-center text-accent">
-            <TrendingUp className="h-5 w-5" />
-          </div>
-        </div>
-
-        <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-lg flex items-center justify-between">
-          <div className="space-y-1">
-            <p className="text-[10px] uppercase font-bold text-zinc-400 font-mono">Average Client Value (LTV)</p>
-            <h3 className="font-serif text-2xl font-bold text-zinc-100">₹{averageSpent.toLocaleString('en-IN')}</h3>
-          </div>
-          <div className="h-10 w-10 rounded-md bg-zinc-800 border border-zinc-700 flex items-center justify-center text-secondary">
-            <ShoppingBag className="h-5 w-5" />
+          <div className="h-12 w-12 rounded-md bg-zinc-800 border border-zinc-700 flex items-center justify-center text-primary">
+            <Users className="h-6 w-6" />
           </div>
         </div>
       </div>
@@ -96,8 +77,6 @@ export default function CustomersAdmin() {
                 <th className="p-4 uppercase">Profile</th>
                 <th className="p-4 uppercase">Contact Coordinate</th>
                 <th className="p-4 uppercase">Join Date</th>
-                <th className="p-4 uppercase text-center">Orders Placed</th>
-                <th className="p-4 uppercase text-right">LTV Volume</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-800 text-zinc-300">
@@ -133,8 +112,6 @@ export default function CustomersAdmin() {
                         {new Date(c.createdAt).toLocaleDateString('en-IN', { dateStyle: 'medium' })}
                       </span>
                     </td>
-                    <td className="p-4 text-center font-bold font-mono text-zinc-200">{c.totalOrders}</td>
-                    <td className="p-4 text-right font-bold font-mono text-primary">₹{c.totalSpent.toLocaleString('en-IN')}</td>
                   </tr>
                 ))
               )}

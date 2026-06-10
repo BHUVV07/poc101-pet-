@@ -4,18 +4,16 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingBag, Heart, User, Menu, X, Search, Activity } from 'lucide-react';
-import { useCartStore } from '../../store/cartStore';
+import { Heart, User, Menu, X, Search, Activity } from 'lucide-react';
 import { useWishlistStore } from '../../store/wishlistStore';
 import { useAuthStore } from '../../store/authStore';
 import { useUIStore } from '../../store/uiStore';
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { items: cartItems } = useCartStore();
   const { items: wishlistItems } = useWishlistStore();
   const { user, initialize } = useAuthStore();
-  const { setCartOpen } = useUIStore();
+  const { selectedBranchId, setSelectedBranchId } = useUIStore();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -43,7 +41,15 @@ export default function Navbar() {
     { name: 'About', href: '/about' },
   ];
 
-  const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
+
+  const divisions = [
+    { id: 'garden-area', name: 'Garden Area Store', href: '/store/garden-area', badge: 'Retail' },
+    { id: 'police-chowki', name: 'Police Chowki Store', href: '/store/police-chowki', badge: 'Retail' },
+    { id: 'buddy-kitty', name: 'Buddy & Kitty Hospital', href: '/hospital/buddy-kitty', badge: 'Healthcare' },
+    { id: 'wholesale', name: 'Wholesale B2B', href: '/wholesale', badge: 'Wholesale' },
+    { id: 'petstep', name: 'Petstep Distribution', href: '/petstep', badge: 'Distribution' }
+  ];
 
   return (
     <>
@@ -54,6 +60,36 @@ export default function Navbar() {
             : 'bg-transparent'
         }`}
       >
+        {/* Top Division Selector Bar */}
+        <div className="bg-zinc-950 text-white/70 text-xs border-b border-surface/20 hidden md:block">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-between h-10 items-center">
+            <span className="text-[10px] uppercase tracking-widest font-semibold text-secondary">PawLuxury Ecosystem</span>
+            <div className="flex space-x-6">
+              {divisions.map((div) => {
+                const isSelected = selectedBranchId === div.id;
+                return (
+                  <button
+                    key={div.id}
+                    onClick={() => {
+                      setSelectedBranchId(div.id);
+                      window.location.href = div.href;
+                    }}
+                    className={`relative py-2.5 transition-colors cursor-pointer text-[11px] font-medium flex items-center gap-1.5 ${
+                      isSelected ? 'text-secondary font-bold' : 'hover:text-white'
+                    }`}
+                  >
+                    {isSelected && <span className="h-1.5 w-1.5 rounded-full bg-secondary animate-pulse" />}
+                    {div.name}
+                    <span className="px-1 py-0.5 rounded text-[8px] uppercase tracking-wider font-bold bg-surface/40 text-text-light/90 scale-90">
+                      {div.badge}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between">
             {/* Logo */}
@@ -136,20 +172,7 @@ export default function Navbar() {
                 )}
               </Link>
 
-              {/* Cart Toggle Button */}
-              <button
-                onClick={() => setCartOpen(true)}
-                className="rounded-full p-2 text-text-dark/80 transition-colors hover:bg-surface hover:text-primary relative cursor-pointer"
-                title="Cart"
-                id="navbar-cart-btn"
-              >
-                <ShoppingBag className="h-5 w-5" />
-                {cartCount > 0 && (
-                  <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[9px] font-bold text-brand-bg">
-                    {cartCount}
-                  </span>
-                )}
-              </button>
+
 
               {/* Mobile Menu Toggle */}
               <button
@@ -194,7 +217,37 @@ export default function Navbar() {
                     <X className="h-6 w-6" />
                   </button>
                 </div>
-                
+                {/* Mobile switch division */}
+                <div className="mb-6 border-b border-surface pb-6">
+                  <span className="text-[10px] uppercase tracking-widest font-bold text-secondary block mb-3">Switch Division</span>
+                  <div className="flex flex-col space-y-2">
+                    {divisions.map((div) => {
+                      const isSelected = selectedBranchId === div.id;
+                      return (
+                        <button
+                          key={div.id}
+                          onClick={() => {
+                            setSelectedBranchId(div.id);
+                            setMobileMenuOpen(false);
+                            window.location.href = div.href;
+                          }}
+                          className={`w-full text-left py-2 px-3 rounded text-xs flex justify-between items-center transition-all ${
+                            isSelected ? 'bg-primary text-brand-bg font-bold' : 'hover:bg-surface text-text-dark'
+                          }`}
+                        >
+                          <span className="flex items-center gap-2">
+                            {isSelected && <span className="h-1.5 w-1.5 rounded-full bg-brand-bg" />}
+                            {div.name}
+                          </span>
+                          <span className={`text-[8px] uppercase px-1.5 py-0.5 rounded font-mono ${isSelected ? 'bg-brand-bg/25' : 'bg-surface'}`}>
+                            {div.badge}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
                 <nav className="flex flex-col space-y-6">
                   {navLinks.map((link) => (
                     <Link

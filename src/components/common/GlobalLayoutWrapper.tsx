@@ -3,7 +3,6 @@
 import { usePathname } from 'next/navigation';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import CartDrawer from './CartDrawer';
 import WhatsAppButton from './WhatsAppButton';
 import NotificationToast from './NotificationToast';
 import DemoRoleSelector from './DemoRoleSelector';
@@ -42,7 +41,6 @@ export default function GlobalLayoutWrapper({
       <Navbar />
       <main className="flex-1 flex flex-col">{children}</main>
       <Footer />
-      <CartDrawer />
       <QuickViewModal />
       <WhatsAppButton />
       <NotificationToast />

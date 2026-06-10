@@ -6,6 +6,7 @@ import { dbService } from '../../services/dbService';
 import { Product, Category } from '../../types';
 import ProductCard from '../../components/product/ProductCard';
 import { Search, SlidersHorizontal, ArrowUpDown } from 'lucide-react';
+import { useUIStore } from '../../store/uiStore';
 
 function ShopContent() {
   const searchParams = useSearchParams();
@@ -19,6 +20,7 @@ function ShopContent() {
   const [searchTerm, setSearchTerm] = useState(initialSearch);
   const [sortBy, setSortBy] = useState('newest');
   const [loading, setLoading] = useState(true);
+  const { selectedBranchId } = useUIStore();
 
   const categoryParam = searchParams.get('category') || '';
   if (categoryParam !== prevCategoryParam) {
@@ -26,14 +28,17 @@ function ShopContent() {
     setSelectedCategory(categoryParam);
   }
 
-  // Load Categories
+  // Load Categories & filter by branch
   useEffect(() => {
     async function loadCategories() {
       const cats = await dbService.getCategories();
-      setCategories(cats);
+      const branchProds = await dbService.getProducts(undefined, undefined, selectedBranchId);
+      const activeCatIds = new Set(branchProds.map(p => p.categoryId));
+      const filteredCats = cats.filter(c => activeCatIds.has(c.id));
+      setCategories(filteredCats);
     }
     loadCategories();
-  }, []);
+  }, [selectedBranchId]);
 
   // Load Products when filters change
   useEffect(() => {
@@ -43,7 +48,7 @@ function ShopContent() {
         ? categories.find(c => c.slug === selectedCategory)?.id 
         : undefined;
       
-      let prods = await dbService.getProducts(catId, searchTerm);
+      let prods = await dbService.getProducts(catId, searchTerm, selectedBranchId);
 
       // Sorting
       if (sortBy === 'price-low') {
@@ -122,8 +127,6 @@ function ShopContent() {
               id="shop-sort-select"
             >
               <option value="newest">Sort: New Releases</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
               <option value="rating">Sort: By Customer Rating</option>
             </select>
           </div>

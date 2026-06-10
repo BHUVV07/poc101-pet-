@@ -890,13 +890,161 @@ const MOCK_BANNERS = [
   }
 ];
 
+// Branches Array
+const BRANCHES = [
+  {
+    id: 'garden-area',
+    name: 'Garden Area Retail Store',
+    slug: 'garden-area',
+    type: 'retail',
+    address: 'Garden Area Main Road, Shivamogga, KA',
+    phone: '+919876543211',
+    whatsappNumber: '+919876543211',
+    upiId: 'pawluxury.garden@ybl',
+    bankName: 'HDFC Bank Ltd',
+    accountNumber: '50200062391032',
+    ifscCode: 'HDFC0000104',
+    accountName: 'PawLuxury Garden Area',
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'police-chowki',
+    name: 'Police Chowki Retail Store',
+    slug: 'police-chowki',
+    type: 'retail',
+    address: 'Police Chowki Junction, Shivamogga, KA',
+    phone: '+919876543212',
+    whatsappNumber: '+919876543212',
+    upiId: 'pawluxury.chowki@ybl',
+    bankName: 'ICICI Bank Ltd',
+    accountNumber: '901239084712',
+    ifscCode: 'ICIC0000204',
+    accountName: 'PawLuxury Police Chowki',
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'buddy-kitty',
+    name: 'Buddy & Kitty Multi Speciality Pet Hospital',
+    slug: 'buddy-kitty',
+    type: 'hospital',
+    address: '100 Ft Road near Kariyanna Building, Shivamogga, KA',
+    phone: '+919876543213',
+    whatsappNumber: '+919876543213',
+    upiId: 'buddykitty@ybl',
+    bankName: 'Axis Bank Ltd',
+    accountNumber: '49012384729103',
+    ifscCode: 'UTIB0000456',
+    accountName: 'Buddy Kitty Hospital',
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'wholesale',
+    name: 'Veterinary Wholesale Division',
+    slug: 'wholesale',
+    type: 'wholesale',
+    address: 'Old Barline Road near Kote, Shivamogga, KA',
+    phone: '+919876543214',
+    whatsappNumber: '+919876543214',
+    upiId: 'pawluxury.wholesale@ybl',
+    bankName: 'HDFC Bank Ltd',
+    accountNumber: '50200062391222',
+    ifscCode: 'HDFC0000104',
+    accountName: 'PawLuxury Wholesale',
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'petstep',
+    name: 'Petstep Integrated Service Pvt. Ltd. Distribution Division',
+    slug: 'petstep',
+    type: 'distribution',
+    address: 'GSKM Road beside Royal Orchid Hotel, Shivamogga, KA',
+    phone: '+919876543215',
+    whatsappNumber: '+919876543215',
+    upiId: 'petstep@ybl',
+    bankName: 'HDFC Bank Ltd',
+    accountNumber: '50200062391333',
+    ifscCode: 'HDFC0000104',
+    accountName: 'Petstep Integrated Service Pvt Ltd',
+    createdAt: new Date().toISOString()
+  }
+];
+
+// Generate branch inventory array
+const branchInventory = [];
+processedProducts.forEach((p, pIdx) => {
+  const catId = p.categoryId;
+  const assignments = [];
+  
+  if (['cat-1', 'cat-2', 'cat-6', 'cat-7', 'cat-8', 'cat-9', 'cat-10', 'cat-11', 'cat-12', 'cat-13', 'cat-14'].includes(catId)) {
+    assignments.push({
+      branchId: 'garden-area',
+      stock: p.stock,
+      price: null,
+      isFeatured: p.isFeatured,
+      isBestseller: pIdx % 4 === 0
+    });
+    assignments.push({
+      branchId: 'police-chowki',
+      stock: Math.max(0, p.stock - 5 + (pIdx % 15)),
+      price: null,
+      isFeatured: pIdx % 3 === 0,
+      isBestseller: pIdx % 5 === 0
+    });
+  }
+
+  if (['cat-3', 'cat-4', 'cat-5', 'cat-15'].includes(catId)) {
+    assignments.push({
+      branchId: 'buddy-kitty',
+      stock: p.stock,
+      price: null,
+      isFeatured: p.isFeatured,
+      isBestseller: pIdx % 3 === 0
+    });
+  }
+
+  if (['cat-3', 'cat-4', 'cat-5'].includes(catId)) {
+    assignments.push({
+      branchId: 'wholesale',
+      stock: p.stock * 5,
+      price: Math.round(p.price * 0.8),
+      isFeatured: false,
+      isBestseller: pIdx % 4 === 0
+    });
+  }
+
+  if (['cat-1', 'cat-2', 'cat-8', 'cat-14'].includes(catId)) {
+    assignments.push({
+      branchId: 'petstep',
+      stock: p.stock * 10,
+      price: Math.round(p.price * 0.75),
+      isFeatured: p.isFeatured,
+      isBestseller: pIdx % 6 === 0
+    });
+  }
+
+  assignments.forEach((assign) => {
+    branchInventory.push({
+      id: `bi-${p.id}-${assign.branchId}`,
+      branchId: assign.branchId,
+      productId: p.id,
+      stock: assign.stock,
+      price: assign.price,
+      isFeatured: assign.isFeatured,
+      isBestseller: assign.isBestseller,
+      isAvailable: assign.stock > 0,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    });
+  });
+});
+
 // Generate src/services/mockData.ts
 const processedCategories = CATEGORIES.map(cat => ({
   ...cat,
   createdAt: new Date().toISOString()
 }));
 
-const mockDataContent = `import { Product, Category, Blog, Banner } from '../types';
+const mockDataContent = `import { Product, Category, Blog, Banner, Branch, BranchInventory } from '../types';
 
 export const MOCK_CATEGORIES: Category[] = ${JSON.stringify(processedCategories, null, 2)};
 
@@ -905,6 +1053,10 @@ export const MOCK_PRODUCTS: Product[] = ${JSON.stringify(processedProducts, null
 export const MOCK_BLOGS: Blog[] = ${JSON.stringify(MOCK_BLOGS, null, 2)};
 
 export const MOCK_BANNERS: Banner[] = ${JSON.stringify(MOCK_BANNERS, null, 2)};
+
+export const MOCK_BRANCHES: Branch[] = ${JSON.stringify(BRANCHES, null, 2)};
+
+export const MOCK_BRANCH_INVENTORY: BranchInventory[] = ${JSON.stringify(branchInventory, null, 2)};
 `;
 
 fs.writeFileSync(path.join(__dirname, '../src/services/mockData.ts'), mockDataContent);
@@ -958,7 +1110,23 @@ INSERT INTO public.blogs (id, title, slug, content, summary, featured_image, aut
 -- 6. Insert Settings Default
 INSERT INTO public.settings (id, whatsapp_number, low_stock_threshold, bank_name, account_number, ifsc_code, account_name, upi_id, created_at, updated_at) VALUES
 (1, '+919876543210', 10, 'HDFC Bank Ltd', '50200062391032', 'HDFC0000104', 'PawLuxury Private Limited', 'pawluxury@ybl', NOW(), NOW());
-`;
+
+-- 7. Insert Branches
+INSERT INTO public.branches (id, name, slug, type, address, phone, whatsapp_number, upi_id, bank_name, account_number, ifsc_code, account_name, created_at) VALUES\n`;
+
+BRANCHES.forEach((b, idx) => {
+  const isLast = idx === BRANCHES.length - 1;
+  sqlContent += `('${b.id}', '${b.name.replace(/'/g, "''")}', '${b.slug}', '${b.type}', '${b.address.replace(/'/g, "''")}', '${b.phone}', '${b.whatsappNumber}', '${b.upiId}', '${b.bankName}', '${b.accountNumber}', '${b.ifscCode}', '${b.accountName}', NOW())${isLast ? ';' : ','}\n`;
+});
+
+sqlContent += `\n-- 8. Insert Branch Inventory
+INSERT INTO public.branch_inventory (branch_id, product_id, stock, price, is_featured, is_bestseller, is_available, created_at, updated_at) VALUES\n`;
+
+branchInventory.forEach((bi, idx) => {
+  const isLast = idx === branchInventory.length - 1;
+  const priceVal = bi.price === null ? 'NULL' : bi.price.toFixed(2);
+  sqlContent += `('${bi.branchId}', '${bi.productId}', ${bi.stock}, ${priceVal}, ${bi.isFeatured}, ${bi.isBestseller}, ${bi.isAvailable}, NOW(), NOW())${isLast ? ';' : ','}\n`;
+});
 
 fs.writeFileSync(path.join(__dirname, '../supabase/supabase_seed.sql'), sqlContent);
 console.log('Successfully generated supabase/supabase_seed.sql!');

@@ -38,21 +38,30 @@ export default function AdminLayout({
   }
 
   // Admin access warning fallback
-  const isNotAdmin = !user || user.role !== 'admin';
+  const isNotAdmin = !user || (user.role !== 'admin' && !user.role.startsWith('manager_'));
 
   const menuItems = [
     { name: 'Overview', href: '/admin', icon: LayoutDashboard },
     { name: 'Products', href: '/admin/products', icon: ShoppingBag },
     { name: 'Categories', href: '/admin/categories', icon: FolderTree },
-    { name: 'Orders Ledger', href: '/admin/orders', icon: ShoppingCart },
     { name: 'Vet Consultations', href: '/admin/consultations', icon: Stethoscope },
     { name: 'Customers', href: '/admin/customers', icon: Users },
-    { name: 'Inventory Logs', href: '/admin/inventory', icon: Boxes },
+    { name: 'Inventory Stock', href: '/admin/inventory', icon: Boxes },
     { name: 'Banners Manager', href: '/admin/banners', icon: Image },
     { name: 'Blog Manager', href: '/admin/blogs', icon: PenTool },
     { name: 'Activity Logs', href: '/admin/activity-logs', icon: ClipboardList },
     { name: 'Settings Panel', href: '/admin/settings', icon: Settings },
   ];
+
+  const filteredMenuItems = user?.role === 'admin'
+    ? menuItems
+    : menuItems.filter(item => {
+        const restricted = ['Banners Manager', 'Blog Manager', 'Settings Panel', 'Activity Logs', 'Categories'];
+        if (item.name === 'Vet Consultations' && user?.role !== 'manager_hospital') {
+          return false;
+        }
+        return !restricted.includes(item.name);
+      });
 
   return (
     <div className="flex h-screen bg-zinc-950 text-zinc-100 font-sans overflow-hidden">
@@ -71,7 +80,7 @@ export default function AdminLayout({
 
           {/* Navigation Links */}
           <nav className="p-4 space-y-1">
-            {menuItems.map((item) => {
+            {filteredMenuItems.map((item) => {
               const isActive = item.href === '/admin' ? pathname === '/admin' : pathname === item.href;
               const Icon = item.icon;
               return (
@@ -109,7 +118,7 @@ export default function AdminLayout({
         {/* Workspace Header */}
         <header className="h-20 border-b border-zinc-800 flex items-center justify-between px-8 bg-zinc-900/30">
           <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-400">
-            {menuItems.find(m => m.href === pathname)?.name || 'Admin Workspace'}
+            {filteredMenuItems.find(m => m.href === pathname)?.name || 'Admin Workspace'}
           </h2>
           
           <div className="flex items-center gap-4">
@@ -135,7 +144,7 @@ export default function AdminLayout({
               <ShieldCheck className="h-12 w-12 text-primary animate-pulse" />
               <h2 className="font-serif text-2xl font-bold text-zinc-100">Access Restricted</h2>
               <p className="text-sm text-zinc-400 max-w-sm leading-relaxed">
-                You are currently logged in as a <strong>CUSTOMER</strong>. Please use the floating <strong>Demo Role Selector</strong> button in the bottom-left corner to toggle your active session to <strong>ADMIN</strong>.
+                You are currently logged in as a <strong>CUSTOMER</strong>. Please use the floating <strong>Demo Role Selector</strong> button in the bottom-left corner to toggle your active session to <strong>ADMIN</strong> or one of the <strong>BRANCH MANAGER</strong> roles.
               </p>
             </div>
           ) : null}

@@ -129,80 +129,6 @@ export default function SettingsAdmin() {
           </div>
         </div>
 
-        {/* Section 3: Manual Payments credentials */}
-        <div className="bg-zinc-900 border border-zinc-800 p-6 rounded-lg space-y-6">
-          <h2 className="font-serif text-lg font-bold text-zinc-200 border-b border-zinc-800 pb-3 flex items-center gap-2">
-            <Landmark className="h-5 w-5 text-primary" />
-            Manual Checkout Gateway Credentials
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* Account name */}
-            <div className="space-y-1.5">
-              <label className="text-[11px] font-bold text-zinc-400">Recipient Bank Account Name</label>
-              <input
-                type="text"
-                value={accountName}
-                onChange={(e) => setAccountName(e.target.value)}
-                placeholder="e.g. PawLuxury Private Limited"
-                className="w-full p-2 bg-zinc-950 border border-zinc-800 rounded text-zinc-150 focus:outline-none"
-                required
-              />
-            </div>
-
-            {/* UPI ID */}
-            <div className="space-y-1.5">
-              <label className="text-[11px] font-bold text-zinc-400">UPI Address (for QR checkout generation)</label>
-              <input
-                type="text"
-                value={upiId}
-                onChange={(e) => setUpiId(e.target.value)}
-                placeholder="e.g. pawluxury@ybl"
-                className="w-full p-2 bg-zinc-950 border border-zinc-800 rounded text-zinc-150 focus:outline-none font-mono font-bold"
-                required
-              />
-            </div>
-
-            {/* Account number */}
-            <div className="space-y-1.5">
-              <label className="text-[11px] font-bold text-zinc-400">Bank Account Number</label>
-              <input
-                type="text"
-                value={accountNumber}
-                onChange={(e) => setAccountNumber(e.target.value)}
-                placeholder="e.g. 50200062391032"
-                className="w-full p-2 bg-zinc-950 border border-zinc-800 rounded text-zinc-150 focus:outline-none font-mono"
-                required
-              />
-            </div>
-
-            {/* Bank name */}
-            <div className="space-y-1.5">
-              <label className="text-[11px] font-bold text-zinc-400">Recipient Bank Name</label>
-              <input
-                type="text"
-                value={bankName}
-                onChange={(e) => setBankName(e.target.value)}
-                placeholder="e.g. HDFC Bank Ltd"
-                className="w-full p-2 bg-zinc-950 border border-zinc-800 rounded text-zinc-150 focus:outline-none"
-                required
-              />
-            </div>
-
-            {/* IFSC Code */}
-            <div className="space-y-1.5">
-              <label className="text-[11px] font-bold text-zinc-400">Bank IFSC Route Code</label>
-              <input
-                type="text"
-                value={ifscCode}
-                onChange={(e) => setIfscCode(e.target.value)}
-                placeholder="e.g. HDFC0000104"
-                className="w-full p-2 bg-zinc-950 border border-zinc-800 rounded text-zinc-150 focus:outline-none font-mono"
-                required
-              />
-            </div>
-          </div>
-        </div>
-
         {/* Form control actions */}
         <div className="flex gap-4 items-center">
           <button
@@ -216,7 +142,7 @@ export default function SettingsAdmin() {
 
           <div className="flex items-center gap-1.5 text-zinc-500 font-mono text-[10px]">
             <ShieldCheck className="h-4 w-4 text-accent" />
-            Updates immediately populate checkout UPI codes and payment credentials.
+            Updates immediately populate branch coordinates and WhatsApp concierge details.
           </div>
         </div>
 

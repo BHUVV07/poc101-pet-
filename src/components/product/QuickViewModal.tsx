@@ -1,36 +1,23 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Plus, Minus, Star, ShoppingBag, Eye } from 'lucide-react';
+import { X, Star, Eye } from 'lucide-react';
 import { useUIStore } from '../../store/uiStore';
-import { useCartStore } from '../../store/cartStore';
-import { useState } from 'react';
 import Link from 'next/link';
 
 export default function QuickViewModal() {
-  const { quickViewProduct, setQuickViewProduct, showNotification } = useUIStore();
-  const { addItem } = useCartStore();
-  const [quantity, setQuantity] = useState(1);
+  const { quickViewProduct, setQuickViewProduct } = useUIStore();
 
   if (!quickViewProduct) return null;
 
-  const activePrice = quickViewProduct.salePrice ?? quickViewProduct.price;
-  const hasDiscount = quickViewProduct.salePrice !== null;
-
-  const handleAddToCart = () => {
-    addItem(quickViewProduct, quantity);
-    setQuickViewProduct(null);
-    showNotification(
-      'Added to Cart',
-      `${quantity}x ${quickViewProduct.name} added to your cart.`,
-      'success'
-    );
-    setQuantity(1); // reset quantity
+  const handleWhatsAppInquiry = () => {
+    const text = encodeURIComponent(`Hi, I am interested in inquiring about the product "${quickViewProduct.name}" at PawLuxury.`);
+    const whatsappUrl = `https://wa.me/919876543210?text=${text}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   const handleClose = () => {
     setQuickViewProduct(null);
-    setQuantity(1);
   };
 
   return (
@@ -68,11 +55,6 @@ export default function QuickViewModal() {
               alt={quickViewProduct.name}
               className="h-full w-full object-cover"
             />
-            {hasDiscount && (
-              <span className="absolute top-6 left-6 bg-primary text-brand-bg text-xs font-semibold px-3 py-1 rounded-sm uppercase tracking-wider">
-                Sale Offer
-              </span>
-            )}
           </div>
 
           {/* Right Column: Details */}
@@ -91,23 +73,12 @@ export default function QuickViewModal() {
                 {quickViewProduct.name}
               </h2>
 
-              {/* Rating and Price */}
-              <div className="flex flex-wrap items-center gap-4 border-b border-surface/50 pb-4">
-                <div className="flex items-center space-x-2 text-primary font-serif text-xl font-bold">
-                  <span>₹{activePrice.toLocaleString('en-IN')}</span>
-                  {hasDiscount && (
-                    <span className="text-sm text-text-light line-through font-sans font-normal">
-                      ₹{quickViewProduct.price.toLocaleString('en-IN')}
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex items-center gap-1.5 text-amber-500 border-l border-surface pl-4">
-                  <Star className="h-4.5 w-4.5 fill-current" />
-                  <span className="text-sm font-bold text-text-dark">
-                    {quickViewProduct.rating.toFixed(1)} / 5.0
-                  </span>
-                </div>
+              {/* Rating */}
+              <div className="flex items-center gap-1.5 text-amber-500 border-b border-surface/50 pb-4">
+                <Star className="h-4.5 w-4.5 fill-current" />
+                <span className="text-sm font-bold text-text-dark">
+                  {quickViewProduct.rating.toFixed(1)} / 5.0 (Showcase)
+                </span>
               </div>
 
               {/* Description */}
@@ -118,33 +89,12 @@ export default function QuickViewModal() {
 
             {/* Actions */}
             <div className="space-y-4 border-t border-surface/50 pt-4">
-              <div className="flex flex-col sm:flex-row items-center gap-4">
-                {/* Quantity */}
-                <div className="flex items-center border border-surface rounded-full w-full sm:w-auto justify-between">
-                  <button
-                    onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
-                    className="p-3 text-text-light hover:text-text-dark transition-colors cursor-pointer"
-                  >
-                    <Minus className="h-4 w-4" />
-                  </button>
-                  <span className="px-6 font-semibold text-sm text-text-dark">{quantity}</span>
-                  <button
-                    onClick={() => setQuantity(prev => prev + 1)}
-                    className="p-3 text-text-light hover:text-text-dark transition-colors cursor-pointer"
-                  >
-                    <Plus className="h-4 w-4" />
-                  </button>
-                </div>
-
-                {/* Add to Cart */}
-                <button
-                  onClick={handleAddToCart}
-                  className="flex-1 w-full flex items-center justify-center gap-2 rounded-full bg-primary py-3 px-6 text-sm font-semibold text-brand-bg hover:bg-primary/95 transition-colors cursor-pointer"
-                >
-                  <ShoppingBag className="h-4.5 w-4.5" />
-                  Add to Cart
-                </button>
-              </div>
+              <button
+                onClick={handleWhatsAppInquiry}
+                className="w-full flex items-center justify-center gap-2 rounded-full bg-emerald-700 hover:bg-emerald-600 py-3.5 px-6 text-sm font-semibold text-white shadow-md transition-colors cursor-pointer"
+              >
+                Enquire on WhatsApp
+              </button>
 
               {/* View Full details */}
               <Link

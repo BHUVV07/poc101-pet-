@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { dbService } from '../../../services/dbService';
-import { Product } from '../../../types';
+import { Product, Branch } from '../../../types';
 import { useAuthStore } from '../../../store/authStore';
 import { useUIStore } from '../../../store/uiStore';
 import { 
@@ -16,6 +16,8 @@ export default function InventoryAdmin() {
 
   const [products, setProducts] = useState<Product[]>([]);
   const [logs, setLogs] = useState<any[]>([]);
+  const [branches, setBranches] = useState<Branch[]>([]);
+  const [selectedAdminBranchId, setSelectedAdminBranchId] = useState<string>('garden-area');
   const [settings, setSettings] = useState<any>({ lowStockThreshold: 10 });
   const [searchTerm, setSearchTerm] = useState('');
   
@@ -26,10 +28,25 @@ export default function InventoryAdmin() {
   const [updating, setUpdating] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  const getBranchIdFromRole = (role: string): string | null => {
+    if (role === 'manager_garden_area') return 'garden-area';
+    if (role === 'manager_police_chowki') return 'police-chowki';
+    if (role === 'manager_hospital') return 'buddy-kitty';
+    if (role === 'manager_wholesale') return 'wholesale';
+    if (role === 'manager_petstep') return 'petstep';
+    return null;
+  };
+
   async function loadData() {
+    if (!user) return;
     setLoading(true);
     try {
-      const prods = await dbService.getProducts();
+      const isManager = user.role.startsWith('manager_');
+      const activeBranchId = isManager ? getBranchIdFromRole(user.role) : selectedAdminBranchId;
+      
+      if (!activeBranchId) return;
+
+      const prods = await dbService.getProducts(undefined, undefined, activeBranchId);
       setProducts(prods);
 
       const invLogs = await dbService.getInventoryLogs();
@@ -37,6 +54,11 @@ export default function InventoryAdmin() {
 
       const sets = await dbService.getSettings();
       setSettings(sets);
+
+      if (user.role === 'admin' && branches.length === 0) {
+        const bList = await dbService.getBranches();
+        setBranches(bList);
+      }
     } catch (err) {
       console.error(err);
     } finally {
@@ -45,35 +67,42 @@ export default function InventoryAdmin() {
   }
 
   useEffect(() => {
-    loadData();
-  }, []);
+    if (user) {
+      loadData();
+    }
+  }, [user, selectedAdminBranchId]);
 
   const handleAdjustStock = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedProduct || adjustAmount === 0) return;
+    if (!selectedProduct || adjustAmount === 0 || !user) return;
 
     setUpdating(true);
     try {
-      // Log inventory change (updates dbService state and database)
-      await dbService.logInventoryChange(
+      const isManager = user.role.startsWith('manager_');
+      const activeBranchId = isManager ? getBranchIdFromRole(user.role) : selectedAdminBranchId;
+      
+      if (!activeBranchId) return;
+
+      // Adjust branch specific inventory stock
+      await dbService.updateBranchInventoryStock(
+        activeBranchId,
         selectedProduct.id,
         adjustAmount,
-        adjustReason,
-        user?.id
+        adjustReason
       );
 
       // Log to general activity ledger
-      const directionStr = adjustAmount > 0 ? 'Restocked' : 'Writed-off';
+      const directionStr = adjustAmount > 0 ? 'Restocked' : 'Written-off';
       await dbService.logActivity(
         'Stock Level Audited',
         `product:${selectedProduct.id}`,
-        `${directionStr} ${Math.abs(adjustAmount)} units of ${selectedProduct.name}. Reason: ${adjustReason}`,
-        user?.id
+        `Branch [${activeBranchId}]: ${directionStr} ${Math.abs(adjustAmount)} units of ${selectedProduct.name}. Reason: ${adjustReason}`,
+        user.id
       );
 
       showNotification(
         'Stock Adjusted',
-        `Product stock updated by ${adjustAmount} units.`,
+        `Product stock updated by ${adjustAmount} units for ${activeBranchId.toUpperCase()}.`,
         'success'
       );
       
@@ -97,6 +126,13 @@ export default function InventoryAdmin() {
   const lowStockProducts = products.filter(p => p.stock <= settings.lowStockThreshold);
   const outOfStockProducts = products.filter(p => p.stock === 0);
 
+  const isManager = user?.role.startsWith('manager_');
+  const activeBranchId = isManager ? getBranchIdFromRole(user?.role || '') : selectedAdminBranchId;
+  const filteredLogs = logs.filter(log => {
+    if (!activeBranchId) return true;
+    return log.reason?.includes(`Branch [${activeBranchId}]`);
+  });
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[300px]">
@@ -107,6 +143,34 @@ export default function InventoryAdmin() {
 
   return (
     <div className="space-y-8 text-zinc-100">
+      {/* Scope Selector */}
+      {user?.role === 'admin' && (
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-zinc-900 border border-zinc-800 p-4 rounded-lg">
+          <div>
+            <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-300 font-mono">Inventory Division Scope</h2>
+            <p className="text-xs text-zinc-500 mt-1">Select a branch outlet to query and manage isolated stock records.</p>
+          </div>
+          <select
+            value={selectedAdminBranchId}
+            onChange={(e) => setSelectedAdminBranchId(e.target.value)}
+            className="rounded border border-zinc-700 bg-zinc-950 px-3 py-2 text-xs font-semibold text-zinc-200 focus:outline-none cursor-pointer"
+          >
+            {branches.map((b) => (
+              <option key={b.id} value={b.id}>
+                {b.name} ({b.type.toUpperCase()})
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      {user?.role.startsWith('manager_') && (
+        <div className="bg-zinc-900/50 border border-zinc-800/80 p-4 rounded-lg">
+          <p className="text-xs text-zinc-400 leading-normal">
+            Managing stock for branch: <strong className="text-primary font-mono">{user.role.replace('manager_', '').replace(/_/g, ' ').toUpperCase()}</strong>. Outages and warnings are branch-isolated.
+          </p>
+        </div>
+      )}
       {/* 1. Statistics grids */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-lg flex items-center justify-between">
@@ -312,10 +376,10 @@ export default function InventoryAdmin() {
             </h3>
             
             <div className="space-y-4 max-h-[350px] overflow-y-auto pr-1">
-              {logs.length === 0 ? (
+              {filteredLogs.length === 0 ? (
                 <p className="text-zinc-500 text-xs italic text-center py-6">No inventory changes recorded.</p>
               ) : (
-                logs.map((log) => {
+                filteredLogs.map((log) => {
                   const isPositive = log.changeAmount > 0;
                   return (
                     <div key={log.id} className="border-l-2 border-zinc-800 pl-4 py-1 space-y-1 text-xs relative">

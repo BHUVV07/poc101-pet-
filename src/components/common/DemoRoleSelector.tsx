@@ -4,6 +4,7 @@ import { useAuthStore } from '../../store/authStore';
 import { useUIStore } from '../../store/uiStore';
 import { UserCheck, ShieldAlert } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { UserRole } from '../../types';
 
 export default function DemoRoleSelector() {
   const { user, setDemoRole } = useAuthStore();
@@ -13,17 +14,30 @@ export default function DemoRoleSelector() {
   if (!user) return null;
 
   const toggleRole = () => {
-    const nextRole = user.role === 'customer' ? 'admin' : 'customer';
+    const roles: UserRole[] = [
+      'customer',
+      'admin',
+      'manager_garden_area',
+      'manager_police_chowki',
+      'manager_hospital',
+      'manager_wholesale',
+      'manager_petstep'
+    ];
+    const currentIndex = roles.indexOf(user.role);
+    const nextIndex = (currentIndex + 1) % roles.length;
+    const nextRole = roles[nextIndex];
+
     setDemoRole(nextRole);
     showNotification(
       'Demo Role Changed',
-      `You are now viewing PawLuxury as a ${nextRole.toUpperCase()}.`,
+      `You are now viewing PawLuxury as ${nextRole.replace('manager_', 'Manager: ').replace(/_/g, ' ').toUpperCase()}.`,
       'info'
     );
-    if (nextRole === 'admin') {
-      router.push('/admin');
-    } else {
+
+    if (nextRole === 'customer') {
       router.push('/');
+    } else {
+      router.push('/admin');
     }
   };
 
@@ -38,7 +52,12 @@ export default function DemoRoleSelector() {
         {user.role === 'admin' ? (
           <>
             <ShieldAlert className="h-4 w-4 text-primary animate-pulse" />
-            <span>Role: Admin Dashboard</span>
+            <span>Role: Super Admin</span>
+          </>
+        ) : user.role.startsWith('manager_') ? (
+          <>
+            <ShieldAlert className="h-4 w-4 text-secondary animate-pulse" />
+            <span>Role: {user.role.replace('manager_', 'Mgr: ').replace(/_/g, ' ').toUpperCase()}</span>
           </>
         ) : (
           <>

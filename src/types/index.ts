@@ -1,4 +1,11 @@
-export type UserRole = 'customer' | 'admin';
+export type UserRole = 
+  | 'customer' 
+  | 'admin' 
+  | 'manager_garden_area' 
+  | 'manager_police_chowki' 
+  | 'manager_hospital' 
+  | 'manager_wholesale' 
+  | 'manager_petstep';
 
 export interface Profile {
   id: string;
@@ -33,6 +40,43 @@ export interface Product {
   images: string[];
   createdAt: string;
   updatedAt: string;
+  branchId?: string; // Mapped dynamically in shop/categories filters
+}
+
+export interface Branch {
+  id: string;
+  name: string;
+  slug: string;
+  type: 'retail' | 'hospital' | 'wholesale' | 'distribution';
+  address: string;
+  phone: string;
+  whatsappNumber: string;
+  upiId: string;
+  bankName: string;
+  accountNumber: string;
+  ifscCode: string;
+  accountName: string;
+  createdAt: string;
+}
+
+export interface BranchInventory {
+  id: string;
+  branchId: string;
+  productId: string;
+  stock: number;
+  price: number | null;
+  isFeatured: boolean;
+  isBestseller: boolean;
+  isAvailable: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface BranchManager {
+  id: string;
+  userId: string;
+  branchId: string;
+  createdAt: string;
 }
 
 export interface Address {
@@ -89,6 +133,7 @@ export interface Order {
   paymentProof?: PaymentProof;
   createdAt: string;
   updatedAt: string;
+  branchId?: string | null;
 }
 
 export interface CartItem {
@@ -112,6 +157,7 @@ export interface Consultation {
   doctorNotes: string | null;
   createdAt: string;
   updatedAt: string;
+  branchId?: string | null;
 }
 
 export interface Review {

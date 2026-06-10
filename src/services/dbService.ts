@@ -1,6 +1,6 @@
-import { Product, Category, Order, Consultation, Blog, Banner, Address, OrderStatus, PaymentStatus, ConsultationStatus } from '../types';
+import { Product, Category, Order, Consultation, Blog, Banner, Address, OrderStatus, PaymentStatus, ConsultationStatus, Branch, BranchInventory } from '../types';
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
-import { MOCK_PRODUCTS, MOCK_CATEGORIES, MOCK_BLOGS, MOCK_BANNERS } from './mockData';
+import { MOCK_PRODUCTS, MOCK_CATEGORIES, MOCK_BLOGS, MOCK_BANNERS, MOCK_BRANCHES, MOCK_BRANCH_INVENTORY } from './mockData';
 
 // Helper to initialize LocalStorage if empty
 const initMockDB = () => {
@@ -16,6 +16,10 @@ const initMockDB = () => {
     } else {
       resetNeeded = true;
     }
+    // Also reset if branches are missing
+    if (!localStorage.getItem('pawluxury_db_branches')) {
+      resetNeeded = true;
+    }
   } catch (e) {
     resetNeeded = true;
   }
@@ -25,6 +29,8 @@ const initMockDB = () => {
     localStorage.setItem('pawluxury_db_categories', JSON.stringify(MOCK_CATEGORIES));
     localStorage.setItem('pawluxury_db_blogs', JSON.stringify(MOCK_BLOGS));
     localStorage.setItem('pawluxury_db_banners', JSON.stringify(MOCK_BANNERS));
+    localStorage.setItem('pawluxury_db_branches', JSON.stringify(MOCK_BRANCHES));
+    localStorage.setItem('pawluxury_db_branch_inventory', JSON.stringify(MOCK_BRANCH_INVENTORY));
   } else {
     if (!localStorage.getItem('pawluxury_db_products')) {
       localStorage.setItem('pawluxury_db_products', JSON.stringify(MOCK_PRODUCTS));
@@ -37,6 +43,12 @@ const initMockDB = () => {
     }
     if (!localStorage.getItem('pawluxury_db_banners')) {
       localStorage.setItem('pawluxury_db_banners', JSON.stringify(MOCK_BANNERS));
+    }
+    if (!localStorage.getItem('pawluxury_db_branches')) {
+      localStorage.setItem('pawluxury_db_branches', JSON.stringify(MOCK_BRANCHES));
+    }
+    if (!localStorage.getItem('pawluxury_db_branch_inventory')) {
+      localStorage.setItem('pawluxury_db_branch_inventory', JSON.stringify(MOCK_BRANCH_INVENTORY));
     }
   }
   if (!localStorage.getItem('pawluxury_db_orders')) {
@@ -160,34 +172,227 @@ export const dbService = {
   },
 
   // ==========================================
+  // BRANCHES & DIVISION OPERATIONS
+  // ==========================================
+  async getBranches(): Promise<Branch[]> {
+    if (isSupabaseConfigured() && supabase) {
+      const { data, error } = await supabase.from('branches').select('*').order('name');
+      if (!error && data) {
+        return data.map(b => ({
+          id: b.id,
+          name: b.name,
+          slug: b.slug,
+          type: b.type,
+          address: b.address,
+          phone: b.phone,
+          whatsappNumber: b.whatsapp_number,
+          upiId: b.upi_id,
+          bankName: b.bank_name,
+          accountNumber: b.account_number,
+          ifscCode: b.ifsc_code,
+          accountName: b.account_name,
+          createdAt: b.created_at
+        })) as Branch[];
+      }
+    }
+    return getMockData<Branch>('branches');
+  },
+
+  async getBranchById(id: string): Promise<Branch | null> {
+    const branches = await this.getBranches();
+    return branches.find(b => b.id === id) || null;
+  },
+
+  async getBranchBySlug(slug: string): Promise<Branch | null> {
+    const branches = await this.getBranches();
+    return branches.find(b => b.slug === slug) || null;
+  },
+
+  async getBranchInventory(branchId: string): Promise<BranchInventory[]> {
+    if (isSupabaseConfigured() && supabase) {
+      const { data, error } = await supabase.from('branch_inventory').select('*').eq('branch_id', branchId);
+      if (!error && data) {
+        return data.map(bi => ({
+          id: bi.id,
+          branchId: bi.branch_id,
+          productId: bi.product_id,
+          stock: bi.stock,
+          price: bi.price,
+          isFeatured: bi.is_featured,
+          isBestseller: bi.is_bestseller,
+          isAvailable: bi.is_available,
+          createdAt: bi.created_at,
+          updatedAt: bi.updated_at
+        })) as BranchInventory[];
+      }
+    }
+    const inv = getMockData<BranchInventory>('branch_inventory');
+    return inv.filter(bi => bi.branchId === branchId);
+  },
+
+  async updateBranchInventoryStock(branchId: string, productId: string, changeAmount: number, reason: string = 'Stock Adjusted'): Promise<boolean> {
+    if (isSupabaseConfigured() && supabase) {
+      const { data: current } = await supabase
+        .from('branch_inventory')
+        .select('stock')
+        .eq('branch_id', branchId)
+        .eq('product_id', productId)
+        .single();
+      const currentStock = current ? current.stock : 0;
+      const nextStock = Math.max(0, currentStock + changeAmount);
+      
+      const { error } = await supabase
+        .from('branch_inventory')
+        .update({ stock: nextStock, updated_at: new Date().toISOString() })
+        .eq('branch_id', branchId)
+        .eq('product_id', productId);
+      
+      if (!error) {
+        await supabase.from('inventory_logs').insert([{
+          product_id: productId,
+          change_amount: changeAmount,
+          reason: `Branch [${branchId}]: ${reason}`,
+          created_at: new Date().toISOString()
+        }]);
+        return true;
+      }
+      return false;
+    }
+
+    const inv = getMockData<BranchInventory>('branch_inventory');
+    const itemIdx = inv.findIndex(bi => bi.branchId === branchId && bi.productId === productId);
+    if (itemIdx > -1) {
+      inv[itemIdx].stock = Math.max(0, inv[itemIdx].stock + changeAmount);
+      inv[itemIdx].isAvailable = inv[itemIdx].stock > 0;
+      inv[itemIdx].updatedAt = new Date().toISOString();
+      saveMockData('branch_inventory', inv);
+
+      const logs = getMockData<any>('inventory_logs');
+      logs.push({
+        id: `inv-${Date.now()}`,
+        productId,
+        changeAmount,
+        reason: `Branch [${branchId}]: ${reason}`,
+        createdAt: new Date().toISOString()
+      });
+      saveMockData('inventory_logs', logs);
+      return true;
+    }
+    return false;
+  },
+
+  async saveBranchSettings(branchId: string, settings: Partial<Branch>): Promise<boolean> {
+    if (isSupabaseConfigured() && supabase) {
+      const { error } = await supabase
+        .from('branches')
+        .update({
+          address: settings.address,
+          phone: settings.phone,
+          whatsapp_number: settings.whatsappNumber,
+          upi_id: settings.upiId,
+          bank_name: settings.bankName,
+          account_number: settings.accountNumber,
+          ifsc_code: settings.ifscCode,
+          account_name: settings.accountName
+        })
+        .eq('id', branchId);
+      return !error;
+    }
+
+    const branches = getMockData<Branch>('branches');
+    const idx = branches.findIndex(b => b.id === branchId);
+    if (idx > -1) {
+      branches[idx] = { ...branches[idx], ...settings };
+      saveMockData('branches', branches);
+      return true;
+    }
+    return false;
+  },
+
+  // ==========================================
   // PRODUCTS
   // ==========================================
-  async getProducts(categoryId?: string, search?: string): Promise<Product[]> {
+  async getProducts(categoryId?: string, search?: string, branchId?: string): Promise<Product[]> {
     if (isSupabaseConfigured() && supabase) {
-      let query = supabase.from('products').select('*, product_images(image_url)');
-      if (categoryId) query = query.eq('category_id', categoryId);
-      if (search) query = query.ilike('name', `%${search}%`);
-      const { data, error } = await query.order('created_at', { ascending: false });
-      if (!error && data) {
-        return data.map(p => ({
-          id: p.id,
-          name: p.name,
-          slug: p.slug,
-          description: p.description,
-          price: p.price,
-          salePrice: p.sale_price,
-          stock: p.stock,
-          categoryId: p.category_id,
-          isFeatured: p.is_featured,
-          rating: p.rating,
-          images: p.product_images?.map((img: { image_url: string }) => img.image_url) || [],
-          createdAt: p.created_at,
-          updatedAt: p.updated_at
-        })) as Product[];
+      if (branchId) {
+        const { data: biData } = await supabase
+          .from('branch_inventory')
+          .select('product_id, stock, price, is_featured, is_bestseller')
+          .eq('branch_id', branchId)
+          .eq('is_available', true);
+        
+        if (!biData || biData.length === 0) return [];
+        const productIds = biData.map(item => item.product_id);
+        
+        let query = supabase.from('products').select('*, product_images(image_url)').in('id', productIds);
+        if (categoryId) query = query.eq('category_id', categoryId);
+        if (search) query = query.ilike('name', `%${search}%`);
+        const { data, error } = await query.order('created_at', { ascending: false });
+        if (!error && data) {
+          return data.map(p => {
+            const bi = biData.find(item => item.product_id === p.id);
+            return {
+              id: p.id,
+              name: p.name,
+              slug: p.slug,
+              description: p.description,
+              price: bi?.price || p.price,
+              salePrice: p.sale_price,
+              stock: bi?.stock || 0,
+              categoryId: p.category_id,
+              isFeatured: bi?.is_featured || false,
+              rating: p.rating,
+              images: p.product_images?.map((img: { image_url: string }) => img.image_url) || [],
+              createdAt: p.created_at,
+              updatedAt: p.updated_at,
+              branchId: branchId
+            };
+          }) as Product[];
+        }
+      } else {
+        let query = supabase.from('products').select('*, product_images(image_url)');
+        if (categoryId) query = query.eq('category_id', categoryId);
+        if (search) query = query.ilike('name', `%${search}%`);
+        const { data, error } = await query.order('created_at', { ascending: false });
+        if (!error && data) {
+          return data.map(p => ({
+            id: p.id,
+            name: p.name,
+            slug: p.slug,
+            description: p.description,
+            price: p.price,
+            salePrice: p.sale_price,
+            stock: p.stock,
+            categoryId: p.category_id,
+            isFeatured: p.is_featured,
+            rating: p.rating,
+            images: p.product_images?.map((img: { image_url: string }) => img.image_url) || [],
+            createdAt: p.created_at,
+            updatedAt: p.updated_at
+          })) as Product[];
+        }
       }
     }
 
     let products = getMockData<Product>('products');
+    if (branchId) {
+      const biList = getMockData<BranchInventory>('branch_inventory');
+      const branchBi = biList.filter(bi => bi.branchId === branchId && bi.isAvailable);
+      const biMap = new Map(branchBi.map(bi => [bi.productId, bi]));
+      products = products
+        .filter(p => biMap.has(p.id))
+        .map(p => {
+          const bi = biMap.get(p.id)!;
+          return {
+            ...p,
+            stock: bi.stock,
+            price: bi.price || p.price,
+            isFeatured: bi.isFeatured,
+            branchId
+          };
+        });
+    }
+
     if (categoryId) {
       products = products.filter(p => p.categoryId === categoryId);
     }
@@ -198,30 +403,64 @@ export const dbService = {
     return products;
   },
 
-  async getProductBySlug(slug: string): Promise<Product | null> {
+  async getProductBySlug(slug: string, branchId?: string): Promise<Product | null> {
     if (isSupabaseConfigured() && supabase) {
       const { data, error } = await supabase.from('products').select('*, product_images(image_url)').eq('slug', slug).single();
       if (!error && data) {
+        let branchStock = data.stock;
+        let branchPrice = data.price;
+        let isFeatured = data.is_featured;
+
+        if (branchId) {
+          const { data: bi } = await supabase
+            .from('branch_inventory')
+            .select('stock, price, is_featured')
+            .eq('branch_id', branchId)
+            .eq('product_id', data.id)
+            .single();
+          if (bi) {
+            branchStock = bi.stock;
+            branchPrice = bi.price || data.price;
+            isFeatured = bi.is_featured;
+          }
+        }
+
         return {
           id: data.id,
           name: data.name,
           slug: data.slug,
           description: data.description,
-          price: data.price,
+          price: branchPrice,
           salePrice: data.sale_price,
-          stock: data.stock,
+          stock: branchStock,
           categoryId: data.category_id,
-          isFeatured: data.is_featured,
+          isFeatured: isFeatured,
           rating: data.rating,
           images: data.product_images?.map((img: { image_url: string }) => img.image_url) || [],
           createdAt: data.created_at,
-          updatedAt: data.updated_at
+          updatedAt: data.updated_at,
+          branchId
         } as Product;
       }
     }
 
     const products = getMockData<Product>('products');
-    return products.find(p => p.slug === slug) || null;
+    const p = products.find(p => p.slug === slug) || null;
+    if (!p) return null;
+    if (branchId) {
+      const biList = getMockData<BranchInventory>('branch_inventory');
+      const bi = biList.find(b => b.branchId === branchId && b.productId === p.id);
+      if (bi) {
+        return {
+          ...p,
+          stock: bi.stock,
+          price: bi.price || p.price,
+          isFeatured: bi.isFeatured,
+          branchId
+        };
+      }
+    }
+    return p;
   },
 
   async createProduct(productData: Omit<Product, 'id' | 'createdAt' | 'updatedAt' | 'rating' | 'slug'>): Promise<Product> {
@@ -352,10 +591,11 @@ export const dbService = {
   // ==========================================
   // ORDERS
   // ==========================================
-  async getOrders(userId?: string): Promise<Order[]> {
+  async getOrders(userId?: string, branchId?: string): Promise<Order[]> {
     if (isSupabaseConfigured() && supabase) {
       let query = supabase.from('orders').select('*, order_items(*), payment_proofs(*)');
       if (userId) query = query.eq('user_id', userId);
+      if (branchId) query = query.eq('branch_id', branchId);
       const { data, error } = await query.order('created_at', { ascending: false });
       if (!error && data) return data as Order[];
     }
@@ -363,6 +603,9 @@ export const dbService = {
     let orders = getMockData<Order>('orders');
     if (userId) {
       orders = orders.filter(o => o.userId === userId);
+    }
+    if (branchId) {
+      orders = orders.filter(o => o.branchId === branchId);
     }
     return orders;
   },
@@ -384,6 +627,7 @@ export const dbService = {
     shippingAddress: Address;
     orderNotes: string | null;
     items: { product: Product; quantity: number }[];
+    branchId?: string | null;
   }): Promise<Order> {
     const orderId = `order-${Date.now()}`;
     const orderItems = orderData.items.map((item, index) => ({
@@ -408,24 +652,28 @@ export const dbService = {
       orderNotes: orderData.orderNotes,
       items: orderItems,
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+      updatedAt: new Date().toISOString(),
+      branchId: orderData.branchId || null
     };
 
     if (isSupabaseConfigured() && supabase) {
-      // In a real environment, transaction is set up
       const { data: ord, error: ordErr } = await supabase.from('orders').insert([{
         user_id: orderData.userId,
+        user_email: orderData.userEmail || 'customer@pawluxury.com',
         total_amount: orderData.totalAmount,
         shipping_address: orderData.shippingAddress,
         order_notes: orderData.orderNotes,
         status: 'payment_pending',
-        payment_status: 'unpaid'
+        payment_status: 'unpaid',
+        branch_id: orderData.branchId || null
       }]).select().single();
 
       if (!ordErr && ord) {
         const itemInserts = orderData.items.map(item => ({
           order_id: ord.id,
           product_id: item.product.id,
+          product_name: item.product.name,
+          product_image: item.product.images[0] || null,
           quantity: item.quantity,
           price: item.product.salePrice ?? item.product.price
         }));
@@ -541,10 +789,11 @@ export const dbService = {
   // ==========================================
   // CONSULTATIONS
   // ==========================================
-  async getConsultations(userId?: string): Promise<Consultation[]> {
+  async getConsultations(userId?: string, branchId?: string): Promise<Consultation[]> {
     if (isSupabaseConfigured() && supabase) {
       let query = supabase.from('consultations').select('*');
       if (userId) query = query.eq('user_id', userId);
+      if (branchId) query = query.eq('branch_id', branchId);
       const { data, error } = await query.order('created_at', { ascending: false });
       if (!error && data) return data as Consultation[];
     }
@@ -552,6 +801,9 @@ export const dbService = {
     let consultations = getMockData<Consultation>('consultations');
     if (userId) {
       consultations = consultations.filter(c => c.userId === userId);
+    }
+    if (branchId) {
+      consultations = consultations.filter(c => c.branchId === branchId);
     }
     return consultations;
   },
@@ -564,17 +816,20 @@ export const dbService = {
       scheduledAt: null,
       doctorNotes: null,
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+      updatedAt: new Date().toISOString(),
+      branchId: consultationData.branchId || 'buddy-kitty'
     };
 
     if (isSupabaseConfigured() && supabase) {
       const { data, error } = await supabase.from('consultations').insert([{
         user_id: consultationData.userId,
+        user_email: consultationData.userEmail || 'customer@pawluxury.com',
         pet_name: consultationData.petName,
         pet_type: consultationData.petType,
         pet_age: consultationData.petAge,
         symptoms: consultationData.symptoms,
-        status: 'pending'
+        status: 'pending',
+        branch_id: consultationData.branchId || 'buddy-kitty'
       }]).select().single();
       if (!error && data) return data as Consultation;
     }

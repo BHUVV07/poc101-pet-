@@ -33,11 +33,9 @@ export default function Profile() {
   const { showNotification } = useUIStore();
   const router = useRouter();
 
-  const [orders, setOrders] = useState<Order[]>([]);
   const [consultations, setConsultations] = useState<Consultation[]>([]);
   const [addresses, setAddresses] = useState<Address[]>([]);
-  const [activeTab, setActiveTab] = useState('orders');
-  const [expandedOrderId, setExpandedOrderId] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState('consultations');
   const [showAddressForm, setShowAddressForm] = useState(false);
 
   // Address form Setup
@@ -52,9 +50,6 @@ export default function Profile() {
 
   const loadUserData = useCallback(async () => {
     if (!user) return;
-    const ords = await dbService.getOrders(user.id);
-    setOrders(ords);
-
     const cons = await dbService.getConsultations(user.id);
     setConsultations(cons);
 
@@ -145,15 +140,6 @@ export default function Profile() {
 
         {/* Tab Controls */}
         <div className="bg-surface/10 border border-surface/10 rounded-lg overflow-hidden divide-y divide-surface/10 text-sm">
-          <button
-            onClick={() => setActiveTab('orders')}
-            className={`w-full flex items-center gap-3 px-4 py-3.5 text-left font-semibold cursor-pointer ${
-              activeTab === 'orders' ? 'bg-surface/30 text-primary' : 'text-text-dark/80 hover:bg-surface/20'
-            }`}
-          >
-            <ShoppingBag className="h-4.5 w-4.5 shrink-0" />
-            Order Tracking
-          </button>
           
           <button
             onClick={() => setActiveTab('consultations')}
@@ -179,171 +165,6 @@ export default function Profile() {
 
       {/* Main Panel Content */}
       <div className="w-full md:w-3/4 bg-surface/15 border border-surface/20 rounded-lg p-6 sm:p-8 min-h-[450px]">
-        {/* ================================================= */}
-        {/* ORDERS TAB */}
-        {/* ================================================= */}
-        {activeTab === 'orders' && (
-          <div className="space-y-6">
-            <h3 className="font-serif text-2xl font-bold text-text-dark">Your Orders</h3>
-            
-            {orders.length === 0 ? (
-              <div className="text-center py-16 space-y-4">
-                <p className="text-sm text-text-light font-medium">You have not placed any orders yet.</p>
-                <Link
-                  href="/shop"
-                  className="inline-block rounded-full bg-primary text-brand-bg px-6 py-2.5 text-xs font-semibold"
-                >
-                  Start Shopping
-                </Link>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {orders.map((order) => {
-                  const isExpanded = expandedOrderId === order.id;
-                  return (
-                    <div key={order.id} className="border border-surface/50 rounded-lg overflow-hidden bg-brand-bg">
-                      {/* Summary Block */}
-                      <div
-                        onClick={() => setExpandedOrderId(isExpanded ? null : order.id)}
-                        className="p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 cursor-pointer hover:bg-surface/10 transition-colors"
-                      >
-                        <div className="space-y-1">
-                          <p className="text-xs font-bold text-text-dark uppercase">Order ID: {order.id.slice(0, 13)}...</p>
-                          <p className="text-[11px] text-text-light">
-                            Placed on {new Date(order.createdAt).toLocaleDateString('en-IN', { dateStyle: 'medium' })}
-                          </p>
-                        </div>
-                        
-                        <div className="flex items-center gap-6">
-                          <span className="font-serif text-sm font-bold text-primary">
-                            ₹{order.totalAmount.toLocaleString('en-IN')}
-                          </span>
-                          
-                          {/* Payment status badge */}
-                          <span className={`text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-sm ${
-                            order.paymentStatus === 'paid' ? 'bg-accent/20 text-accent' :
-                            order.paymentStatus === 'pending_verification' ? 'bg-amber-500/20 text-amber-600' :
-                            'bg-red-500/20 text-red-600'
-                          }`}>
-                            {order.paymentStatus === 'pending_verification' ? 'Pending Verify' : order.paymentStatus}
-                          </span>
-
-                          {/* Expansion Arrow */}
-                          {isExpanded ? <ChevronUp className="h-4.5 w-4.5 text-text-light" /> : <ChevronDown className="h-4.5 w-4.5 text-text-light" />}
-                        </div>
-                      </div>
-
-                      {/* Detail block */}
-                      {isExpanded && (
-                        <div className="border-t border-surface/40 p-5 bg-surface/5 space-y-6">
-                          {/* Order Stepper timeline */}
-                          <div className="space-y-4">
-                            <h4 className="text-xs font-bold text-text-dark uppercase tracking-wider">Tracking Timeline</h4>
-                            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 relative">
-                              {/* Step 1: Placed */}
-                              <div className="flex items-center gap-3 sm:flex-col sm:text-center">
-                                <div className="h-8 w-8 rounded-full bg-accent text-white flex items-center justify-center font-bold text-xs">
-                                  <Check className="h-4 w-4" />
-                                </div>
-                                <div>
-                                  <p className="text-xs font-bold text-text-dark">Order Logged</p>
-                                  <p className="text-[10px] text-text-light">Details Saved</p>
-                                </div>
-                              </div>
-
-                              {/* Step 2: Verification */}
-                              <div className="flex items-center gap-3 sm:flex-col sm:text-center">
-                                <div className={`h-8 w-8 rounded-full flex items-center justify-center font-bold text-xs ${
-                                  order.paymentStatus === 'paid' ? 'bg-accent text-white' : 'bg-surface text-text-light'
-                                }`}>
-                                  {order.paymentStatus === 'paid' ? <Check className="h-4 w-4" /> : <Clock className="h-4 w-4" />}
-                                </div>
-                                <div>
-                                  <p className="text-xs font-bold text-text-dark">Payment Audited</p>
-                                  <p className="text-[10px] text-text-light">
-                                    {order.paymentStatus === 'paid' ? 'Receipt Cleared' : 'Pending Receipt'}
-                                  </p>
-                                </div>
-                              </div>
-
-                              {/* Step 3: Processing */}
-                              <div className="flex items-center gap-3 sm:flex-col sm:text-center">
-                                <div className={`h-8 w-8 rounded-full flex items-center justify-center font-bold text-xs ${
-                                  order.status === 'processing' || order.status === 'shipped' || order.status === 'delivered'
-                                    ? 'bg-accent text-white' : 'bg-surface text-text-light'
-                                }`}>
-                                  {order.status === 'shipped' || order.status === 'delivered' ? <Check className="h-4 w-4" /> : <ClipboardList className="h-4 w-4" />}
-                                </div>
-                                <div>
-                                  <p className="text-xs font-bold text-text-dark">Creations Processed</p>
-                                  <p className="text-[10px] text-text-light">Apothecary Audit</p>
-                                </div>
-                              </div>
-
-                              {/* Step 4: Shipped */}
-                              <div className="flex items-center gap-3 sm:flex-col sm:text-center">
-                                <div className={`h-8 w-8 rounded-full flex items-center justify-center font-bold text-xs ${
-                                  order.status === 'shipped' || order.status === 'delivered' ? 'bg-accent text-white' : 'bg-surface text-text-light'
-                                }`}>
-                                  {order.status === 'delivered' ? <Check className="h-4 w-4" /> : <Truck className="h-4 w-4" />}
-                                </div>
-                                <div>
-                                  <p className="text-xs font-bold text-text-dark">Shipped</p>
-                                  <p className="text-[10px] text-text-light font-semibold text-secondary">
-                                    {order.trackingNumber ? `Track: ${order.trackingNumber}` : 'Pending Carrier'}
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Items ordered */}
-                          <div className="space-y-3 pt-4 border-t border-surface/30">
-                            <h4 className="text-xs font-bold text-text-dark uppercase tracking-wider">Creations Ordered</h4>
-                            <div className="divide-y divide-surface/20">
-                              {order.items?.map((item) => (
-                                <div key={item.id} className="py-2.5 flex items-center justify-between gap-4 text-xs">
-                                  <div className="flex items-center gap-3">
-                                    {item.productImage && (
-                                      <img src={item.productImage} alt="" className="h-10 w-10 object-cover rounded bg-surface" />
-                                    )}
-                                    <div>
-                                      <p className="font-semibold text-text-dark">{item.productName}</p>
-                                      <p className="text-text-light text-[10px]">Qty: {item.quantity}</p>
-                                    </div>
-                                  </div>
-                                  <span className="font-semibold text-text-dark">
-                                    ₹{(item.price * item.quantity).toLocaleString('en-IN')}
-                                  </span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-
-                          {/* Invoice Summary */}
-                          <div className="pt-4 border-t border-surface/30 flex flex-col items-end gap-1.5 text-xs text-text-light">
-                            <div className="flex justify-between w-full max-w-[250px]">
-                              <span>Price Subtotal</span>
-                              <span className="font-semibold text-text-dark">₹{Math.round(order.totalAmount / 1.05).toLocaleString('en-IN')}</span>
-                            </div>
-                            <div className="flex justify-between w-full max-w-[250px]">
-                              <span>Apothecary Fee & Shipping</span>
-                              <span className="font-semibold text-text-dark">₹{Math.round(order.totalAmount * 0.05).toLocaleString('en-IN')}</span>
-                            </div>
-                            <div className="flex justify-between w-full max-w-[250px] border-t border-surface/80 pt-1.5 text-sm font-bold text-text-dark">
-                              <span>Total Ledger Paid</span>
-                              <span className="text-primary font-serif">₹{order.totalAmount.toLocaleString('en-IN')}</span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-        )}
 
         {/* ================================================= */}
         {/* VET CONSULTATIONS TAB */}
@@ -540,7 +361,7 @@ export default function Profile() {
 
             {/* Address List */}
             {addresses.length === 0 ? (
-              <p className="text-xs text-text-light text-center py-8 italic">No addresses saved. Add one to expedite checkout.</p>
+              <p className="text-xs text-text-light text-center py-8 italic">No addresses saved. Add one to complete your profile.</p>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {addresses.map((addr) => (

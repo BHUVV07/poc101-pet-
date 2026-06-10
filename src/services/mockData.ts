@@ -1,4 +1,4 @@
-import { Product, Category, Blog, Banner } from '../types';
+import { Product, Category, Blog, Banner, Branch, BranchInventory } from '../types';
 
 export const MOCK_CATEGORIES: Category[] = [
   {
@@ -7,7 +7,7 @@ export const MOCK_CATEGORIES: Category[] = [
     "slug": "premium-dog-food",
     "description": "Human-grade organic meals, raw freeze-dried culinary recipes, and holistic grain-free kibble.",
     "imageUrl": "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&q=80&w=800",
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.022Z"
   },
   {
     "id": "cat-2",
@@ -15,7 +15,7 @@ export const MOCK_CATEGORIES: Category[] = [
     "slug": "premium-cat-food",
     "description": "Gourmet patés, wild-caught seafood blends, and grain-free organic dry recipes.",
     "imageUrl": "https://images.unsplash.com/photo-1569591159212-b02ea8a9f239?auto=format&fit=crop&q=80&w=800",
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.023Z"
   },
   {
     "id": "cat-3",
@@ -23,7 +23,7 @@ export const MOCK_CATEGORIES: Category[] = [
     "slug": "vet-nutrition",
     "description": "Prescription diets, low-glycemic formulas, and therapeutic dietary plans.",
     "imageUrl": "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&q=80&w=800",
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.023Z"
   },
   {
     "id": "cat-4",
@@ -31,7 +31,7 @@ export const MOCK_CATEGORIES: Category[] = [
     "slug": "supplements",
     "description": "Apothecary-grade joint care, prebiotic formulas, and cellular health boosters.",
     "imageUrl": "https://images.unsplash.com/photo-1608454509097-e2522c54b2e8?auto=format&fit=crop&q=80&w=800",
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.023Z"
   },
   {
     "id": "cat-5",
@@ -39,7 +39,7 @@ export const MOCK_CATEGORIES: Category[] = [
     "slug": "healthcare",
     "description": "Veterinary-approved clinical care, dental hygiene elixirs, and first-aid kits.",
     "imageUrl": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800",
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.023Z"
   },
   {
     "id": "cat-6",
@@ -47,7 +47,7 @@ export const MOCK_CATEGORIES: Category[] = [
     "slug": "grooming",
     "description": "Organic silk-infused coat washes, botanical grooming mists, and premium claw care.",
     "imageUrl": "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=800",
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.023Z"
   },
   {
     "id": "cat-7",
@@ -55,7 +55,7 @@ export const MOCK_CATEGORIES: Category[] = [
     "slug": "toys",
     "description": "Bespoke organic cotton ropes, designer natural rubber teethers, and smart puzzle challenges.",
     "imageUrl": "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=800",
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.023Z"
   },
   {
     "id": "cat-8",
@@ -63,7 +63,7 @@ export const MOCK_CATEGORIES: Category[] = [
     "slug": "accessories",
     "description": "Italian leather collars, 24k gold electroplated leads, and cashmere neck scarves.",
     "imageUrl": "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800",
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.023Z"
   },
   {
     "id": "cat-9",
@@ -71,7 +71,7 @@ export const MOCK_CATEGORIES: Category[] = [
     "slug": "beds-comfort",
     "description": "Orthopedic memory foam mattresses, velvet-wrapped nesting dens, and linen blankets.",
     "imageUrl": "https://images.unsplash.com/photo-1541599540903-216a46ca1ad0?auto=format&fit=crop&q=80&w=800",
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.023Z"
   },
   {
     "id": "cat-10",
@@ -79,7 +79,7 @@ export const MOCK_CATEGORIES: Category[] = [
     "slug": "feeding-essentials",
     "description": "Hand-carved marble double bowls, slow feeders, and luxury brass-stand dining sets.",
     "imageUrl": "https://images.unsplash.com/photo-1615678815958-5910c6811c25?auto=format&fit=crop&q=80&w=800",
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.023Z"
   },
   {
     "id": "cat-11",
@@ -87,7 +87,7 @@ export const MOCK_CATEGORIES: Category[] = [
     "slug": "pet-hygiene",
     "description": "Eco-friendly cellular waste bags, antibacterial wipes, and self-cleaning litter boxes.",
     "imageUrl": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&q=80&w=800",
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.023Z"
   },
   {
     "id": "cat-12",
@@ -95,7 +95,7 @@ export const MOCK_CATEGORIES: Category[] = [
     "slug": "travel-essentials",
     "description": "Designer canvas travel totes, memory foam car seats, and titanium pet strollers.",
     "imageUrl": "https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?auto=format&fit=crop&q=80&w=800",
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.023Z"
   },
   {
     "id": "cat-13",
@@ -103,7 +103,7 @@ export const MOCK_CATEGORIES: Category[] = [
     "slug": "training-products",
     "description": "Luxury leather treat pouches, soft clickers, and visual target mats.",
     "imageUrl": "https://images.unsplash.com/photo-1537151608828-ea2b117b6281?auto=format&fit=crop&q=80&w=800",
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.023Z"
   },
   {
     "id": "cat-14",
@@ -111,7 +111,7 @@ export const MOCK_CATEGORIES: Category[] = [
     "slug": "luxury-lifestyle",
     "description": "Pure Mongolian cashmere pet sweaters, designer housewares, and tailored trench coats.",
     "imageUrl": "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&q=80&w=800",
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.023Z"
   },
   {
     "id": "cat-15",
@@ -119,7 +119,7 @@ export const MOCK_CATEGORIES: Category[] = [
     "slug": "veterinary-wellness",
     "description": "Complete clinical health packages, geriatric diagnostics support, and DNA screening kits.",
     "imageUrl": "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=800",
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.023Z"
   }
 ];
 
@@ -138,8 +138,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.779Z",
-    "updatedAt": "2026-06-07T15:11:59.780Z"
+    "createdAt": "2026-06-08T07:24:10.020Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-2",
@@ -155,8 +155,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.780Z",
-    "updatedAt": "2026-06-07T15:11:59.780Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-3",
@@ -172,8 +172,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1585849960390-7a2193b82df1?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.780Z",
-    "updatedAt": "2026-06-07T15:11:59.780Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-4",
@@ -189,8 +189,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-5",
@@ -206,8 +206,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-6",
@@ -223,8 +223,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-7",
@@ -240,8 +240,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1569591159212-b02ea8a9f239?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-8",
@@ -257,8 +257,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1548247416-ec66f4900b2e?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-9",
@@ -274,8 +274,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1569591159212-b02ea8a9f239?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-10",
@@ -291,8 +291,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-11",
@@ -308,8 +308,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1569591159212-b02ea8a9f239?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-12",
@@ -325,8 +325,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-13",
@@ -342,8 +342,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-14",
@@ -359,8 +359,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-15",
@@ -376,8 +376,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-16",
@@ -393,8 +393,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-17",
@@ -410,8 +410,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-18",
@@ -427,8 +427,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-19",
@@ -444,8 +444,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1608454509097-e2522c54b2e8?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-20",
@@ -461,8 +461,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1608454509097-e2522c54b2e8?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-21",
@@ -478,8 +478,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1608454509097-e2522c54b2e8?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-22",
@@ -495,8 +495,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1608454509097-e2522c54b2e8?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-23",
@@ -512,8 +512,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1608454509097-e2522c54b2e8?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-24",
@@ -529,8 +529,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1608454509097-e2522c54b2e8?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-25",
@@ -546,8 +546,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-26",
@@ -563,8 +563,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-27",
@@ -580,8 +580,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-28",
@@ -597,8 +597,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-29",
@@ -614,8 +614,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-30",
@@ -631,8 +631,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-31",
@@ -648,8 +648,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-32",
@@ -665,8 +665,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-33",
@@ -682,8 +682,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-34",
@@ -699,8 +699,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-35",
@@ -716,8 +716,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-36",
@@ -733,8 +733,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-37",
@@ -750,8 +750,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-38",
@@ -767,8 +767,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-39",
@@ -784,8 +784,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-40",
@@ -801,8 +801,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-41",
@@ -818,8 +818,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-42",
@@ -835,8 +835,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-43",
@@ -852,8 +852,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-44",
@@ -869,8 +869,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-45",
@@ -886,8 +886,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-46",
@@ -903,8 +903,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-47",
@@ -920,8 +920,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-48",
@@ -937,8 +937,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-49",
@@ -954,8 +954,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1541599540903-216a46ca1ad0?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-50",
@@ -971,8 +971,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-51",
@@ -988,8 +988,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1541599540903-216a46ca1ad0?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-52",
@@ -1005,8 +1005,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1541599540903-216a46ca1ad0?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-53",
@@ -1022,8 +1022,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1541599540903-216a46ca1ad0?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-54",
@@ -1039,8 +1039,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1541599540903-216a46ca1ad0?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-55",
@@ -1056,8 +1056,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1615678815958-5910c6811c25?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-56",
@@ -1073,8 +1073,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1615678815958-5910c6811c25?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-57",
@@ -1090,8 +1090,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1615678815958-5910c6811c25?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-58",
@@ -1107,8 +1107,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1615678815958-5910c6811c25?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-59",
@@ -1124,8 +1124,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1615678815958-5910c6811c25?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-60",
@@ -1141,8 +1141,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1615678815958-5910c6811c25?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-61",
@@ -1158,8 +1158,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-62",
@@ -1175,8 +1175,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-63",
@@ -1192,8 +1192,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-64",
@@ -1209,8 +1209,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-65",
@@ -1226,8 +1226,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-66",
@@ -1243,8 +1243,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-67",
@@ -1260,8 +1260,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-68",
@@ -1277,8 +1277,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-69",
@@ -1294,8 +1294,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-70",
@@ -1311,8 +1311,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-71",
@@ -1328,8 +1328,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-72",
@@ -1345,8 +1345,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-73",
@@ -1362,8 +1362,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1537151608828-ea2b117b6281?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-74",
@@ -1379,8 +1379,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1537151608828-ea2b117b6281?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-75",
@@ -1396,8 +1396,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1537151608828-ea2b117b6281?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-76",
@@ -1413,8 +1413,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1537151608828-ea2b117b6281?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-77",
@@ -1430,8 +1430,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1537151608828-ea2b117b6281?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-78",
@@ -1447,8 +1447,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1537151608828-ea2b117b6281?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-79",
@@ -1464,8 +1464,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-80",
@@ -1481,8 +1481,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-81",
@@ -1498,8 +1498,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-82",
@@ -1515,8 +1515,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-83",
@@ -1532,8 +1532,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-84",
@@ -1549,8 +1549,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-85",
@@ -1566,8 +1566,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-86",
@@ -1583,8 +1583,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-87",
@@ -1600,8 +1600,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-88",
@@ -1617,8 +1617,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-89",
@@ -1634,8 +1634,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "prod-90",
@@ -1651,8 +1651,8 @@ export const MOCK_PRODUCTS: Product[] = [
     "images": [
       "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=800"
     ],
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   }
 ];
 
@@ -1667,9 +1667,9 @@ export const MOCK_BLOGS: Blog[] = [
     "authorId": "auth-1",
     "authorName": "Dr. Evelyn Sterling, DVM",
     "isPublished": true,
-    "publishedAt": "2026-06-07T15:11:59.781Z",
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "publishedAt": "2026-06-08T07:24:10.021Z",
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "blog-2",
@@ -1681,9 +1681,9 @@ export const MOCK_BLOGS: Blog[] = [
     "authorId": "auth-1",
     "authorName": "Marcello Russo, Interior Architect",
     "isPublished": true,
-    "publishedAt": "2026-06-07T15:11:59.781Z",
-    "createdAt": "2026-06-07T15:11:59.781Z",
-    "updatedAt": "2026-06-07T15:11:59.781Z"
+    "publishedAt": "2026-06-08T07:24:10.021Z",
+    "createdAt": "2026-06-08T07:24:10.021Z",
+    "updatedAt": "2026-06-08T07:24:10.021Z"
   }
 ];
 
@@ -1696,7 +1696,7 @@ export const MOCK_BANNERS: Banner[] = [
     "linkUrl": "/shop",
     "isActive": true,
     "displayOrder": 1,
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "banner-2",
@@ -1706,6 +1706,2463 @@ export const MOCK_BANNERS: Banner[] = [
     "linkUrl": "/consultation",
     "isActive": true,
     "displayOrder": 2,
-    "createdAt": "2026-06-07T15:11:59.781Z"
+    "createdAt": "2026-06-08T07:24:10.021Z"
+  }
+];
+
+export const MOCK_BRANCHES: Branch[] = [
+  {
+    "id": "garden-area",
+    "name": "Garden Area Retail Store",
+    "slug": "garden-area",
+    "type": "retail",
+    "address": "Garden Area Main Road, Shivamogga, KA",
+    "phone": "+919876543211",
+    "whatsappNumber": "+919876543211",
+    "upiId": "pawluxury.garden@ybl",
+    "bankName": "HDFC Bank Ltd",
+    "accountNumber": "50200062391032",
+    "ifscCode": "HDFC0000104",
+    "accountName": "PawLuxury Garden Area",
+    "createdAt": "2026-06-08T07:24:10.021Z"
+  },
+  {
+    "id": "police-chowki",
+    "name": "Police Chowki Retail Store",
+    "slug": "police-chowki",
+    "type": "retail",
+    "address": "Police Chowki Junction, Shivamogga, KA",
+    "phone": "+919876543212",
+    "whatsappNumber": "+919876543212",
+    "upiId": "pawluxury.chowki@ybl",
+    "bankName": "ICICI Bank Ltd",
+    "accountNumber": "901239084712",
+    "ifscCode": "ICIC0000204",
+    "accountName": "PawLuxury Police Chowki",
+    "createdAt": "2026-06-08T07:24:10.021Z"
+  },
+  {
+    "id": "buddy-kitty",
+    "name": "Buddy & Kitty Multi Speciality Pet Hospital",
+    "slug": "buddy-kitty",
+    "type": "hospital",
+    "address": "100 Ft Road near Kariyanna Building, Shivamogga, KA",
+    "phone": "+919876543213",
+    "whatsappNumber": "+919876543213",
+    "upiId": "buddykitty@ybl",
+    "bankName": "Axis Bank Ltd",
+    "accountNumber": "49012384729103",
+    "ifscCode": "UTIB0000456",
+    "accountName": "Buddy Kitty Hospital",
+    "createdAt": "2026-06-08T07:24:10.021Z"
+  },
+  {
+    "id": "wholesale",
+    "name": "Veterinary Wholesale Division",
+    "slug": "wholesale",
+    "type": "wholesale",
+    "address": "Old Barline Road near Kote, Shivamogga, KA",
+    "phone": "+919876543214",
+    "whatsappNumber": "+919876543214",
+    "upiId": "pawluxury.wholesale@ybl",
+    "bankName": "HDFC Bank Ltd",
+    "accountNumber": "50200062391222",
+    "ifscCode": "HDFC0000104",
+    "accountName": "PawLuxury Wholesale",
+    "createdAt": "2026-06-08T07:24:10.021Z"
+  },
+  {
+    "id": "petstep",
+    "name": "Petstep Integrated Service Pvt. Ltd. Distribution Division",
+    "slug": "petstep",
+    "type": "distribution",
+    "address": "GSKM Road beside Royal Orchid Hotel, Shivamogga, KA",
+    "phone": "+919876543215",
+    "whatsappNumber": "+919876543215",
+    "upiId": "petstep@ybl",
+    "bankName": "HDFC Bank Ltd",
+    "accountNumber": "50200062391333",
+    "ifscCode": "HDFC0000104",
+    "accountName": "Petstep Integrated Service Pvt Ltd",
+    "createdAt": "2026-06-08T07:24:10.021Z"
+  }
+];
+
+export const MOCK_BRANCH_INVENTORY: BranchInventory[] = [
+  {
+    "id": "bi-prod-1-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-1",
+    "stock": 24,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-1-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-1",
+    "stock": 19,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-1-petstep",
+    "branchId": "petstep",
+    "productId": "prod-1",
+    "stock": 240,
+    "price": 4050,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-2-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-2",
+    "stock": 50,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-2-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-2",
+    "stock": 46,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-2-petstep",
+    "branchId": "petstep",
+    "productId": "prod-2",
+    "stock": 500,
+    "price": 2700,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-3-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-3",
+    "stock": 30,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-3-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-3",
+    "stock": 27,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-3-petstep",
+    "branchId": "petstep",
+    "productId": "prod-3",
+    "stock": 300,
+    "price": 3675,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-4-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-4",
+    "stock": 85,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-4-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-4",
+    "stock": 83,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-4-petstep",
+    "branchId": "petstep",
+    "productId": "prod-4",
+    "stock": 850,
+    "price": 1350,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-5-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-5",
+    "stock": 15,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-5-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-5",
+    "stock": 14,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-5-petstep",
+    "branchId": "petstep",
+    "productId": "prod-5",
+    "stock": 150,
+    "price": 3900,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-6-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-6",
+    "stock": 40,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-6-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-6",
+    "stock": 40,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-6-petstep",
+    "branchId": "petstep",
+    "productId": "prod-6",
+    "stock": 400,
+    "price": 3075,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-7-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-7",
+    "stock": 60,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-7-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-7",
+    "stock": 61,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-7-petstep",
+    "branchId": "petstep",
+    "productId": "prod-7",
+    "stock": 600,
+    "price": 2100,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-8-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-8",
+    "stock": 75,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-8-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-8",
+    "stock": 77,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-8-petstep",
+    "branchId": "petstep",
+    "productId": "prod-8",
+    "stock": 750,
+    "price": 1575,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-9-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-9",
+    "stock": 35,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-9-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-9",
+    "stock": 38,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-9-petstep",
+    "branchId": "petstep",
+    "productId": "prod-9",
+    "stock": 350,
+    "price": 2850,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-10-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-10",
+    "stock": 45,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-10-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-10",
+    "stock": 49,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-10-petstep",
+    "branchId": "petstep",
+    "productId": "prod-10",
+    "stock": 450,
+    "price": 2175,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-11-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-11",
+    "stock": 28,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-11-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-11",
+    "stock": 33,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-11-petstep",
+    "branchId": "petstep",
+    "productId": "prod-11",
+    "stock": 280,
+    "price": 2400,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-12-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-12",
+    "stock": 90,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-12-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-12",
+    "stock": 96,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-12-petstep",
+    "branchId": "petstep",
+    "productId": "prod-12",
+    "stock": 900,
+    "price": 1125,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-13-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-13",
+    "stock": 32,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-13-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-13",
+    "stock": 160,
+    "price": 3600,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-14-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-14",
+    "stock": 20,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-14-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-14",
+    "stock": 100,
+    "price": 3840,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-15-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-15",
+    "stock": 42,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-15-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-15",
+    "stock": 210,
+    "price": 3360,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-16-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-16",
+    "stock": 15,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-16-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-16",
+    "stock": 75,
+    "price": 4400,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-17-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-17",
+    "stock": 35,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-17-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-17",
+    "stock": 175,
+    "price": 3440,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-18-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-18",
+    "stock": 18,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-18-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-18",
+    "stock": 90,
+    "price": 3920,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-19-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-19",
+    "stock": 40,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-19-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-19",
+    "stock": 200,
+    "price": 2560,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-20-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-20",
+    "stock": 80,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-20-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-20",
+    "stock": 400,
+    "price": 1560,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-21-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-21",
+    "stock": 25,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-21-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-21",
+    "stock": 125,
+    "price": 3040,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-22-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-22",
+    "stock": 65,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-22-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-22",
+    "stock": 325,
+    "price": 2080,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-23-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-23",
+    "stock": 55,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-23-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-23",
+    "stock": 275,
+    "price": 1920,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-24-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-24",
+    "stock": 50,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-24-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-24",
+    "stock": 250,
+    "price": 2320,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-25-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-25",
+    "stock": 70,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-25-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-25",
+    "stock": 350,
+    "price": 1440,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-26-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-26",
+    "stock": 90,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-26-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-26",
+    "stock": 450,
+    "price": 1120,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-27-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-27",
+    "stock": 15,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-27-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-27",
+    "stock": 75,
+    "price": 5200,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-28-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-28",
+    "stock": 110,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-28-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-28",
+    "stock": 550,
+    "price": 1000,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-29-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-29",
+    "stock": 48,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-29-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-29",
+    "stock": 240,
+    "price": 1760,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-30-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-30",
+    "stock": 130,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-30-wholesale",
+    "branchId": "wholesale",
+    "productId": "prod-30",
+    "stock": 650,
+    "price": 880,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-31-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-31",
+    "stock": 45,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-31-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-31",
+    "stock": 40,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-32-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-32",
+    "stock": 65,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-32-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-32",
+    "stock": 61,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-33-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-33",
+    "stock": 95,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-33-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-33",
+    "stock": 92,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-34-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-34",
+    "stock": 38,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-34-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-34",
+    "stock": 36,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-35-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-35",
+    "stock": 55,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-35-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-35",
+    "stock": 54,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-36-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-36",
+    "stock": 20,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-36-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-36",
+    "stock": 20,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-37-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-37",
+    "stock": 25,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-37-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-37",
+    "stock": 26,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-38-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-38",
+    "stock": 60,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-38-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-38",
+    "stock": 62,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-39-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-39",
+    "stock": 80,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-39-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-39",
+    "stock": 83,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-40-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-40",
+    "stock": 15,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-40-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-40",
+    "stock": 19,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-41-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-41",
+    "stock": 100,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-41-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-41",
+    "stock": 105,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-42-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-42",
+    "stock": 40,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-42-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-42",
+    "stock": 46,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-43-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-43",
+    "stock": 18,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-43-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-43",
+    "stock": 25,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-43-petstep",
+    "branchId": "petstep",
+    "productId": "prod-43",
+    "stock": 180,
+    "price": 4650,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-44-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-44",
+    "stock": 22,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-44-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-44",
+    "stock": 30,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-44-petstep",
+    "branchId": "petstep",
+    "productId": "prod-44",
+    "stock": 220,
+    "price": 5850,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-45-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-45",
+    "stock": 120,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-45-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-45",
+    "stock": 129,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-45-petstep",
+    "branchId": "petstep",
+    "productId": "prod-45",
+    "stock": 1200,
+    "price": 1425,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-46-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-46",
+    "stock": 30,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-46-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-46",
+    "stock": 25,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-46-petstep",
+    "branchId": "petstep",
+    "productId": "prod-46",
+    "stock": 300,
+    "price": 3375,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-47-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-47",
+    "stock": 40,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-47-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-47",
+    "stock": 36,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-47-petstep",
+    "branchId": "petstep",
+    "productId": "prod-47",
+    "stock": 400,
+    "price": 2100,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-48-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-48",
+    "stock": 25,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-48-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-48",
+    "stock": 22,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-48-petstep",
+    "branchId": "petstep",
+    "productId": "prod-48",
+    "stock": 250,
+    "price": 4200,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-49-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-49",
+    "stock": 12,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-49-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-49",
+    "stock": 10,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-50-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-50",
+    "stock": 3,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-50-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-50",
+    "stock": 2,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-51-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-51",
+    "stock": 10,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-51-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-51",
+    "stock": 10,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-52-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-52",
+    "stock": 18,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-52-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-52",
+    "stock": 19,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-53-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-53",
+    "stock": 14,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-53-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-53",
+    "stock": 16,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-54-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-54",
+    "stock": 20,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-54-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-54",
+    "stock": 23,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-55-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-55",
+    "stock": 8,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-55-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-55",
+    "stock": 12,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-56-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-56",
+    "stock": 40,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-56-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-56",
+    "stock": 45,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-57-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-57",
+    "stock": 35,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-57-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-57",
+    "stock": 41,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-58-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-58",
+    "stock": 15,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-58-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-58",
+    "stock": 22,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-59-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-59",
+    "stock": 55,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-59-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-59",
+    "stock": 63,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-60-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-60",
+    "stock": 12,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-60-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-60",
+    "stock": 21,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-61-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-61",
+    "stock": 150,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-61-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-61",
+    "stock": 145,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-62-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-62",
+    "stock": 10,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-62-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-62",
+    "stock": 6,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-63-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-63",
+    "stock": 200,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-63-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-63",
+    "stock": 197,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-64-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-64",
+    "stock": 90,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-64-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-64",
+    "stock": 88,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-65-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-65",
+    "stock": 80,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-65-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-65",
+    "stock": 79,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-66-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-66",
+    "stock": 110,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-66-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-66",
+    "stock": 110,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-67-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-67",
+    "stock": 12,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-67-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-67",
+    "stock": 13,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-68-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-68",
+    "stock": 15,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-68-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-68",
+    "stock": 17,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-69-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-69",
+    "stock": 6,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-69-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-69",
+    "stock": 9,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-70-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-70",
+    "stock": 70,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-70-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-70",
+    "stock": 74,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-71-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-71",
+    "stock": 35,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-71-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-71",
+    "stock": 40,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-72-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-72",
+    "stock": 40,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-72-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-72",
+    "stock": 46,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-73-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-73",
+    "stock": 40,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-73-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-73",
+    "stock": 47,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-74-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-74",
+    "stock": 25,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-74-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-74",
+    "stock": 33,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-75-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-75",
+    "stock": 50,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-75-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-75",
+    "stock": 59,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-76-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-76",
+    "stock": 30,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-76-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-76",
+    "stock": 25,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-77-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-77",
+    "stock": 85,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-77-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-77",
+    "stock": 81,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-78-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-78",
+    "stock": 20,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-78-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-78",
+    "stock": 17,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-79-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-79",
+    "stock": 15,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-79-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-79",
+    "stock": 13,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-79-petstep",
+    "branchId": "petstep",
+    "productId": "prod-79",
+    "stock": 150,
+    "price": 6375,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-80-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-80",
+    "stock": 5,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-80-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-80",
+    "stock": 4,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-80-petstep",
+    "branchId": "petstep",
+    "productId": "prod-80",
+    "stock": 50,
+    "price": 13875,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-81-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-81",
+    "stock": 8,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-81-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-81",
+    "stock": 8,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-81-petstep",
+    "branchId": "petstep",
+    "productId": "prod-81",
+    "stock": 80,
+    "price": 7125,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-82-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-82",
+    "stock": 18,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-82-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-82",
+    "stock": 19,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-82-petstep",
+    "branchId": "petstep",
+    "productId": "prod-82",
+    "stock": 180,
+    "price": 5400,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-83-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-83",
+    "stock": 25,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-83-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-83",
+    "stock": 27,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-83-petstep",
+    "branchId": "petstep",
+    "productId": "prod-83",
+    "stock": 250,
+    "price": 4050,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-84-garden-area",
+    "branchId": "garden-area",
+    "productId": "prod-84",
+    "stock": 12,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-84-police-chowki",
+    "branchId": "police-chowki",
+    "productId": "prod-84",
+    "stock": 15,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-84-petstep",
+    "branchId": "petstep",
+    "productId": "prod-84",
+    "stock": 120,
+    "price": 8250,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-85-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-85",
+    "stock": 45,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-86-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-86",
+    "stock": 30,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-87-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-87",
+    "stock": 50,
+    "price": null,
+    "isFeatured": true,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-88-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-88",
+    "stock": 25,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": true,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-89-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-89",
+    "stock": 35,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
+  },
+  {
+    "id": "bi-prod-90-buddy-kitty",
+    "branchId": "buddy-kitty",
+    "productId": "prod-90",
+    "stock": 120,
+    "price": null,
+    "isFeatured": false,
+    "isBestseller": false,
+    "isAvailable": true,
+    "createdAt": "2026-06-08T07:24:10.022Z",
+    "updatedAt": "2026-06-08T07:24:10.022Z"
   }
 ];

@@ -2,9 +2,8 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Heart, ShoppingBag, Eye, Star } from 'lucide-react';
+import { Heart, Eye, Star } from 'lucide-react';
 import { Product } from '../../types';
-import { useCartStore } from '../../store/cartStore';
 import { useWishlistStore } from '../../store/wishlistStore';
 import { useUIStore } from '../../store/uiStore';
 import Link from 'next/link';
@@ -14,25 +13,11 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const { addItem } = useCartStore();
   const { toggleWishlist, isInWishlist } = useWishlistStore();
   const { setQuickViewProduct, showNotification } = useUIStore();
   const [isHovered, setIsHovered] = useState(false);
 
   const isFavorite = isInWishlist(product.id);
-  const activePrice = product.salePrice ?? product.price;
-  const hasDiscount = product.salePrice !== null;
-
-  const handleAddToCart = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    addItem(product, 1);
-    showNotification(
-      'Added to Cart',
-      `${product.name} has been added to your shopping cart.`,
-      'success'
-    );
-  };
 
   const handleWishlistToggle = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -75,13 +60,6 @@ export default function ProductCard({ product }: ProductCardProps) {
           />
         </Link>
 
-        {/* Discount Badge */}
-        {hasDiscount && (
-          <span className="absolute top-4 left-4 bg-primary text-brand-bg text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-sm">
-            Sale
-          </span>
-        )}
-
         {/* Wishlist Button */}
         <button
           onClick={handleWishlistToggle}
@@ -93,22 +71,15 @@ export default function ProductCard({ product }: ProductCardProps) {
           <Heart className="h-4.5 w-4.5" fill={isFavorite ? 'currentColor' : 'none'} />
         </button>
 
-        {/* Quick View & Cart Overlay Actions */}
-        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+        {/* Quick View Overlay Actions */}
+        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <button
             onClick={handleQuickView}
-            className="h-10 w-10 rounded-full bg-brand-bg flex items-center justify-center text-text-dark hover:bg-primary hover:text-brand-bg shadow-lg transition-colors cursor-pointer"
+            className="h-10 px-5 rounded-full bg-brand-bg flex items-center justify-center gap-1.5 text-xs font-bold text-text-dark hover:bg-primary hover:text-brand-bg shadow-lg transition-colors cursor-pointer"
             title="Quick View"
           >
             <Eye className="h-4.5 w-4.5" />
-          </button>
-          
-          <button
-            onClick={handleAddToCart}
-            className="h-10 w-10 rounded-full bg-brand-bg flex items-center justify-center text-text-dark hover:bg-primary hover:text-brand-bg shadow-lg transition-colors cursor-pointer"
-            title="Add to Cart"
-          >
-            <ShoppingBag className="h-4.5 w-4.5" />
+            Quick View
           </button>
         </div>
       </div>
@@ -133,17 +104,10 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
 
         <div className="flex items-center justify-between pt-1">
-          {/* Pricing */}
-          <div className="flex items-baseline space-x-2">
-            <span className="font-serif text-base font-bold text-primary">
-              ₹{activePrice.toLocaleString('en-IN')}
-            </span>
-            {hasDiscount && (
-              <span className="text-xs text-text-light line-through font-medium">
-                ₹{product.price.toLocaleString('en-IN')}
-              </span>
-            )}
-          </div>
+          {/* Inquiry Indicator */}
+          <span className="text-[11px] font-bold text-primary tracking-wider uppercase">
+            Showcase Catalog
+          </span>
 
           {/* Ratings */}
           <div className="flex items-center space-x-1 text-amber-500">
