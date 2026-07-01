@@ -4,23 +4,14 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, User, Menu, X, Search, Activity } from 'lucide-react';
-import { useWishlistStore } from '../../store/wishlistStore';
-import { useAuthStore } from '../../store/authStore';
-import { useUIStore } from '../../store/uiStore';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { items: wishlistItems } = useWishlistStore();
-  const { user, initialize } = useAuthStore();
-  const { selectedBranchId, setSelectedBranchId } = useUIStore();
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    initialize();
-
     const handleScroll = () => {
       if (window.scrollY > 20) {
         setScrolled(true);
@@ -31,25 +22,27 @@ export default function Navbar() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [initialize]);
+  }, []);
 
   const navLinks = [
-    { name: 'Shop', href: '/shop' },
-    { name: 'Categories', href: '/categories' },
-    { name: 'Vet Consultation', href: '/consultation' },
+    { name: 'Services', href: '/services' },
+    { name: 'Products', href: '/products' },
     { name: 'Blog', href: '/blog' },
     { name: 'About', href: '/about' },
   ];
 
-
-
   const divisions = [
-    { id: 'garden-area', name: 'Garden Area Store', href: '/store/garden-area', badge: 'Retail' },
-    { id: 'police-chowki', name: 'Police Chowki Store', href: '/store/police-chowki', badge: 'Retail' },
-    { id: 'buddy-kitty', name: 'Buddy & Kitty Hospital', href: '/hospital/buddy-kitty', badge: 'Healthcare' },
-    { id: 'wholesale', name: 'Wholesale B2B', href: '/wholesale', badge: 'Wholesale' },
-    { id: 'petstep', name: 'Petstep Distribution', href: '/petstep', badge: 'Distribution' }
+    { id: 'garden-area', name: 'Garden Area Pharmacy', href: '/divisions/garden-area', badge: 'Pharma' },
+    { id: 'police-chowki', name: 'Police Chowki Pharmacy', href: '/divisions/police-chowki', badge: 'Pharma' },
+    { id: 'buddy-kitty', name: 'Buddy & Kitty Hospital', href: '/divisions/buddy-kitty', badge: 'Healthcare' },
+    { id: 'wholesale', name: 'Wholesale B2B', href: '/divisions/wholesale', badge: 'Wholesale' },
+    { id: 'petstep', name: 'Petstep Logistics', href: '/divisions/petstep', badge: 'Logistics' }
   ];
+
+  // Derive the active branch from the URL slug dynamically to support static compilation
+  const activeBranchId = pathname?.startsWith('/divisions/') 
+    ? pathname.split('/')[2] 
+    : '';
 
   return (
     <>
@@ -63,17 +56,14 @@ export default function Navbar() {
         {/* Top Division Selector Bar */}
         <div className="bg-zinc-950 text-white/70 text-xs border-b border-surface/20 hidden md:block">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-between h-10 items-center">
-            <span className="text-[10px] uppercase tracking-widest font-semibold text-secondary">PawLuxury Ecosystem</span>
+            <span className="text-[10px] uppercase tracking-widest font-semibold text-secondary">Manasa Vet Ecosystem</span>
             <div className="flex space-x-6">
               {divisions.map((div) => {
-                const isSelected = selectedBranchId === div.id;
+                const isSelected = activeBranchId === div.id;
                 return (
-                  <button
+                  <Link
                     key={div.id}
-                    onClick={() => {
-                      setSelectedBranchId(div.id);
-                      window.location.href = div.href;
-                    }}
+                    href={div.href}
                     className={`relative py-2.5 transition-colors cursor-pointer text-[11px] font-medium flex items-center gap-1.5 ${
                       isSelected ? 'text-secondary font-bold' : 'hover:text-white'
                     }`}
@@ -83,7 +73,7 @@ export default function Navbar() {
                     <span className="px-1 py-0.5 rounded text-[8px] uppercase tracking-wider font-bold bg-surface/40 text-text-light/90 scale-90">
                       {div.badge}
                     </span>
-                  </button>
+                  </Link>
                 );
               })}
             </div>
@@ -96,7 +86,7 @@ export default function Navbar() {
             <div className="flex items-center">
               <Link href="/" className="group flex items-center gap-1.5">
                 <span className="font-serif text-2xl sm:text-3xl font-bold tracking-wide text-primary">
-                  PawLuxury
+                  Manasa Vet Pharma
                 </span>
                 <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
               </Link>
@@ -125,59 +115,11 @@ export default function Navbar() {
               })}
             </nav>
 
-            {/* Right Action Icons */}
-            <div className="flex items-center space-x-2 sm:space-x-4">
-              {/* Profile Link based on role */}
-              {user ? (
-                <Link
-                  href={user.role === 'admin' ? '/admin' : '/profile'}
-                  className="rounded-full p-2 text-text-dark/80 transition-colors hover:bg-surface hover:text-primary relative group"
-                  title={user.role === 'admin' ? 'Admin Dashboard' : 'Profile'}
-                  id="navbar-profile-btn"
-                >
-                  <User className="h-5 w-5" />
-                  {user.role === 'admin' && (
-                    <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
-                    </span>
-                  )}
-                  {/* Subtle hover tooltip showing role */}
-                  <span className="absolute top-10 right-0 hidden group-hover:block bg-text-dark text-white text-xs px-2 py-1 rounded shadow-md whitespace-nowrap">
-                    {user.role === 'admin' ? 'Admin Access' : `Hi, ${user.fullName?.split(' ')[0]}`}
-                  </span>
-                </Link>
-              ) : (
-                <Link
-                  href="/login"
-                  className="rounded-full p-2 text-text-dark/80 transition-colors hover:bg-surface hover:text-primary"
-                  title="Sign In"
-                >
-                  <User className="h-5 w-5" />
-                </Link>
-              )}
-
-              {/* Wishlist Link */}
-              <Link
-                href="/wishlist"
-                className="rounded-full p-2 text-text-dark/80 transition-colors hover:bg-surface hover:text-primary relative"
-                title="Wishlist"
-                id="navbar-wishlist-btn"
-              >
-                <Heart className="h-5 w-5" />
-                {wishlistItems.length > 0 && (
-                  <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-accent text-[9px] font-bold text-brand-bg">
-                    {wishlistItems.length}
-                  </span>
-                )}
-              </Link>
-
-
-
-              {/* Mobile Menu Toggle */}
+            {/* Mobile Actions */}
+            <div className="flex items-center space-x-2 md:hidden">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="rounded-full p-2 text-text-dark/80 transition-colors hover:bg-surface hover:text-primary md:hidden cursor-pointer"
+                className="rounded-full p-2 text-text-dark/80 transition-colors hover:bg-surface hover:text-primary cursor-pointer"
                 id="navbar-mobile-toggle"
               >
                 {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -209,7 +151,7 @@ export default function Navbar() {
             >
               <div>
                 <div className="flex items-center justify-between mb-8">
-                  <span className="font-serif text-2xl font-bold text-primary">PawLuxury</span>
+                  <span className="font-serif text-xl font-bold text-primary">Manasa Vet Pharma</span>
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-1 rounded-full hover:bg-surface text-text-dark"
@@ -217,20 +159,18 @@ export default function Navbar() {
                     <X className="h-6 w-6" />
                   </button>
                 </div>
+
                 {/* Mobile switch division */}
                 <div className="mb-6 border-b border-surface pb-6">
                   <span className="text-[10px] uppercase tracking-widest font-bold text-secondary block mb-3">Switch Division</span>
                   <div className="flex flex-col space-y-2">
                     {divisions.map((div) => {
-                      const isSelected = selectedBranchId === div.id;
+                      const isSelected = activeBranchId === div.id;
                       return (
-                        <button
+                        <Link
                           key={div.id}
-                          onClick={() => {
-                            setSelectedBranchId(div.id);
-                            setMobileMenuOpen(false);
-                            window.location.href = div.href;
-                          }}
+                          href={div.href}
+                          onClick={() => setMobileMenuOpen(false)}
                           className={`w-full text-left py-2 px-3 rounded text-xs flex justify-between items-center transition-all ${
                             isSelected ? 'bg-primary text-brand-bg font-bold' : 'hover:bg-surface text-text-dark'
                           }`}
@@ -242,19 +182,19 @@ export default function Navbar() {
                           <span className={`text-[8px] uppercase px-1.5 py-0.5 rounded font-mono ${isSelected ? 'bg-brand-bg/25' : 'bg-surface'}`}>
                             {div.badge}
                           </span>
-                        </button>
+                        </Link>
                       );
                     })}
                   </div>
                 </div>
 
-                <nav className="flex flex-col space-y-6">
+                <nav className="flex flex-col space-y-4">
                   {navLinks.map((link) => (
                     <Link
                       key={link.name}
                       href={link.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`text-lg font-medium transition-colors ${
+                      className={`text-base font-medium transition-colors ${
                         pathname === link.href ? 'text-primary border-l-2 border-primary pl-2' : 'text-text-dark/80 hover:text-primary'
                       }`}
                     >
@@ -266,33 +206,8 @@ export default function Navbar() {
 
               {/* Mobile Drawer Bottom Info */}
               <div className="border-t border-surface pt-6 space-y-4">
-                {user ? (
-                  <div className="flex items-center gap-3">
-                    {user.avatarUrl && (
-                      <img src={user.avatarUrl} alt="Avatar" className="h-10 w-10 rounded-full" />
-                    )}
-                    <div>
-                      <p className="font-medium text-sm text-text-dark">{user.fullName}</p>
-                      <Link
-                        href={user.role === 'admin' ? '/admin' : '/profile'}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="text-xs text-secondary hover:underline"
-                      >
-                        {user.role === 'admin' ? 'Go to Admin Dashboard' : 'Manage Account'}
-                      </Link>
-                    </div>
-                  </div>
-                ) : (
-                  <Link
-                    href="/login"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex w-full items-center justify-center rounded-md bg-primary py-2.5 text-sm font-semibold text-brand-bg hover:bg-primary/95 transition-colors"
-                  >
-                    Sign In
-                  </Link>
-                )}
-                <div className="text-center text-xs text-text-light">
-                  © {new Date().getFullYear()} PawLuxury. Premium Lifestyle.
+                <div className="text-center text-xs text-text-light leading-normal">
+                  © {new Date().getFullYear()} Manasa Vet Pharma. All Rights Reserved.
                 </div>
               </div>
             </motion.div>

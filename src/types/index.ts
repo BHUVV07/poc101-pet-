@@ -17,32 +17,6 @@ export interface Profile {
   updatedAt: string;
 }
 
-export interface Category {
-  id: string;
-  name: string;
-  slug: string;
-  description: string | null;
-  imageUrl: string | null;
-  createdAt: string;
-}
-
-export interface Product {
-  id: string;
-  name: string;
-  slug: string;
-  description: string;
-  price: number;
-  salePrice: number | null;
-  stock: number;
-  categoryId: string | null;
-  isFeatured: boolean;
-  rating: number;
-  images: string[];
-  createdAt: string;
-  updatedAt: string;
-  branchId?: string; // Mapped dynamically in shop/categories filters
-}
-
 export interface Branch {
   id: string;
   name: string;
@@ -57,19 +31,6 @@ export interface Branch {
   ifscCode: string;
   accountName: string;
   createdAt: string;
-}
-
-export interface BranchInventory {
-  id: string;
-  branchId: string;
-  productId: string;
-  stock: number;
-  price: number | null;
-  isFeatured: boolean;
-  isBestseller: boolean;
-  isAvailable: boolean;
-  createdAt: string;
-  updatedAt: string;
 }
 
 export interface BranchManager {
@@ -94,54 +55,6 @@ export interface Address {
   createdAt: string;
 }
 
-export type OrderStatus = 'payment_pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
-export type PaymentStatus = 'unpaid' | 'pending_verification' | 'paid' | 'failed';
-
-export interface OrderItem {
-  id: string;
-  orderId: string;
-  productId: string | null;
-  productName: string;
-  productImage: string | null;
-  quantity: number;
-  price: number;
-}
-
-export interface PaymentProof {
-  id: string;
-  orderId: string;
-  userId: string;
-  screenshotUrl: string;
-  transactionId: string;
-  verifiedBy: string | null;
-  verificationNotes: string | null;
-  createdAt: string;
-  verifiedAt: string | null;
-}
-
-export interface Order {
-  id: string;
-  userId: string | null;
-  userEmail?: string;
-  status: OrderStatus;
-  totalAmount: number;
-  shippingAddress: Address;
-  paymentStatus: PaymentStatus;
-  trackingNumber: string | null;
-  orderNotes: string | null;
-  items: OrderItem[];
-  paymentProof?: PaymentProof;
-  createdAt: string;
-  updatedAt: string;
-  branchId?: string | null;
-}
-
-export interface CartItem {
-  id: string;
-  product: Product;
-  quantity: number;
-}
-
 export type ConsultationStatus = 'pending' | 'scheduled' | 'completed' | 'cancelled';
 
 export interface Consultation {
@@ -158,16 +71,6 @@ export interface Consultation {
   createdAt: string;
   updatedAt: string;
   branchId?: string | null;
-}
-
-export interface Review {
-  id: string;
-  productId: string;
-  userId: string;
-  userFullName: string;
-  rating: number;
-  comment: string;
-  createdAt: string;
 }
 
 export interface Blog {

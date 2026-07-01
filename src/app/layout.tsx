@@ -16,12 +16,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "PawLuxury | Premium Pet Ecommerce & Veterinary Care",
-  description: "Experience national-level luxury pet shopping and professional veterinary consultation. Premium food, accessories, and digital veterinary care for your beloved companion.",
-  keywords: "luxury pet store, premium dog food, vet consultation online, designer cat accessories, PawLuxury, premium pet ecosystem",
+  title: "Manasa Vet Pharma | Specialty Veterinary Care & Supplies",
+  description: "Specialty veterinary pharmacy, B2B medicines distribution, and professional clinical care hospital. Integrated pet health and apothecary ecosystem in Shivamogga, Karnataka.",
+  keywords: "veterinary pharmacy, vet medicines, B2B vet supply, animal clinic, Buddy Kitty hospital, Manasa Vet Pharma, Shivamogga",
   openGraph: {
-    title: "PawLuxury | Premium Pet Ecommerce & Veterinary Care",
-    description: "Experience national-level luxury pet shopping and professional veterinary consultation.",
+    title: "Manasa Vet Pharma | Specialty Veterinary Care & Supplies",
+    description: "Specialty veterinary pharmacy, B2B medicines distribution, and professional clinical care hospital.",
     type: "website",
   },
 };

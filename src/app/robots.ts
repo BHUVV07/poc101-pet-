@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/admin/', '/profile/', '/checkout/', '/orders/'],
+      disallow: ['/admin/', '/profile/'],
     },
-    sitemap: 'https://pawluxury.com/sitemap.xml',
+    sitemap: 'https://manasavetpharma.com/sitemap.xml',
   };
 }
