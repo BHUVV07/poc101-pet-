@@ -32,11 +32,10 @@ export default function Navbar() {
   ];
 
   const divisions = [
-    { id: 'garden-area', name: 'Garden Area Pharmacy', href: '/divisions/garden-area', badge: 'Pharma' },
-    { id: 'police-chowki', name: 'Police Chowki Pharmacy', href: '/divisions/police-chowki', badge: 'Pharma' },
-    { id: 'buddy-kitty', name: 'Buddy & Kitty Hospital', href: '/divisions/buddy-kitty', badge: 'Healthcare' },
-    { id: 'wholesale', name: 'Wholesale B2B', href: '/divisions/wholesale', badge: 'Wholesale' },
-    { id: 'petstep', name: 'Petstep Logistics', href: '/divisions/petstep', badge: 'Logistics' }
+    { id: 'garden-area', name: 'Manasa Vet Pharma', href: '/divisions/garden-area' },
+    { id: 'police-chowki', name: 'Manasa Pets Mart', href: '/divisions/police-chowki' },
+    { id: 'buddy-kitty', name: 'Buddy & Kitty', href: '/divisions/buddy-kitty' },
+    { id: 'wholesale', name: 'Manasa Vet Pharma – Wholesale', href: '/divisions/wholesale' }
   ];
 
   // Derive the active branch from the URL slug dynamically to support static compilation
@@ -53,29 +52,35 @@ export default function Navbar() {
             : 'bg-transparent'
         }`}
       >
-        {/* Top Division Selector Bar */}
-        <div className="bg-zinc-950 text-white/70 text-xs border-b border-surface/20 hidden md:block">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-between h-10 items-center">
-            <span className="text-[10px] uppercase tracking-widest font-semibold text-secondary">Manasa Vet Ecosystem</span>
-            <div className="flex space-x-6">
-              {divisions.map((div) => {
-                const isSelected = activeBranchId === div.id;
-                return (
-                  <Link
-                    key={div.id}
-                    href={div.href}
-                    className={`relative py-2.5 transition-colors cursor-pointer text-[11px] font-medium flex items-center gap-1.5 ${
-                      isSelected ? 'text-secondary font-bold' : 'hover:text-white'
-                    }`}
-                  >
-                    {isSelected && <span className="h-1.5 w-1.5 rounded-full bg-secondary animate-pulse" />}
-                    {div.name}
-                    <span className="px-1 py-0.5 rounded text-[8px] uppercase tracking-wider font-bold bg-surface/40 text-text-light/90 scale-90">
-                      {div.badge}
-                    </span>
-                  </Link>
-                );
-              })}
+        {/* Top Division Selector Bar (Redesigned Ecosystem Switcher) */}
+        <div className="bg-[#2F241E] text-white/80 py-4 border-b border-white/5 relative z-50">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-3">
+            {/* Ecosystem Header */}
+            <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-secondary font-mono leading-none select-none text-center">
+              Manasa Vet Ecosystem
+            </span>
+            
+            {/* Scrollable container for dynamic island pills */}
+            <div className="w-full overflow-x-auto no-scrollbar flex justify-start md:justify-center">
+              <div className="flex gap-5 px-2 py-1 mx-auto min-w-max items-center justify-center">
+                {divisions.map((div) => {
+                  const isSelected = activeBranchId === div.id;
+                  return (
+                    <Link
+                      key={div.id}
+                      href={div.href}
+                      className={`relative px-6 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all duration-300 select-none cursor-pointer flex items-center justify-center min-h-[40px] ${
+                        isSelected 
+                          ? 'bg-primary text-white shadow-md shadow-primary/30 scale-[1.02] border border-primary' 
+                          : 'bg-white/5 border border-white/10 hover:border-white/25 text-white/80 hover:text-white hover:scale-[1.03] hover:bg-white/10 hover:shadow-md'
+                      } backdrop-blur-md`}
+                      style={{ transitionDuration: '300ms' }}
+                    >
+                      {div.name}
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
@@ -171,17 +176,12 @@ export default function Navbar() {
                           key={div.id}
                           href={div.href}
                           onClick={() => setMobileMenuOpen(false)}
-                          className={`w-full text-left py-2 px-3 rounded text-xs flex justify-between items-center transition-all ${
+                          className={`w-full text-left py-2 px-3 rounded text-xs flex items-center gap-2 transition-all ${
                             isSelected ? 'bg-primary text-brand-bg font-bold' : 'hover:bg-surface text-text-dark'
                           }`}
                         >
-                          <span className="flex items-center gap-2">
-                            {isSelected && <span className="h-1.5 w-1.5 rounded-full bg-brand-bg" />}
-                            {div.name}
-                          </span>
-                          <span className={`text-[8px] uppercase px-1.5 py-0.5 rounded font-mono ${isSelected ? 'bg-brand-bg/25' : 'bg-surface'}`}>
-                            {div.badge}
-                          </span>
+                          {isSelected && <span className="h-1.5 w-1.5 rounded-full bg-brand-bg shrink-0" />}
+                          <span>{div.name}</span>
                         </Link>
                       );
                     })}

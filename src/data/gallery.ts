@@ -15,7 +15,7 @@ export const galleryData: GalleryImage[] = [
   {
     id: "gal-2",
     url: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=800",
-    caption: "Garden Area Pharmacy - Monitored companion nutrition stock",
+    caption: "Manasa Vet Pharma - Monitored companion nutrition stock",
     category: "retail"
   },
   {

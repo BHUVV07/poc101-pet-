@@ -57,7 +57,7 @@ export const MOCK_BANNERS: Banner[] = [
 export const MOCK_BRANCHES: Branch[] = [
   {
     "id": "garden-area",
-    "name": "Garden Area Pharmacy",
+    "name": "Manasa Vet Pharma",
     "slug": "garden-area",
     "type": "retail",
     "address": "Garden Area Main Road, Shivamogga, KA",
@@ -67,12 +67,12 @@ export const MOCK_BRANCHES: Branch[] = [
     "bankName": "HDFC Bank Ltd",
     "accountNumber": "50200062391032",
     "ifscCode": "HDFC0000104",
-    "accountName": "Manasa Vet Pharma Garden Area",
+    "accountName": "Manasa Vet Pharma",
     "createdAt": "2026-06-08T07:24:10.021Z"
   },
   {
     "id": "police-chowki",
-    "name": "Police Chowki Pharmacy",
+    "name": "Manasa Pets Mart",
     "slug": "police-chowki",
     "type": "retail",
     "address": "Police Chowki Junction, Shivamogga, KA",
@@ -82,7 +82,7 @@ export const MOCK_BRANCHES: Branch[] = [
     "bankName": "ICICI Bank Ltd",
     "accountNumber": "901239084712",
     "ifscCode": "ICIC0000204",
-    "accountName": "Manasa Vet Pharma Police Chowki",
+    "accountName": "Manasa Pets Mart",
     "createdAt": "2026-06-08T07:24:10.021Z"
   },
   {

@@ -6,8 +6,8 @@ import { companyDetails } from '../../data/company';
 
 export default function Footer() {
   const divisions = [
-    { name: 'Garden Area Pharmacy', href: '/divisions/garden-area' },
-    { name: 'Police Chowki Pharmacy', href: '/divisions/police-chowki' },
+    { name: 'Manasa Vet Pharma', href: '/divisions/garden-area' },
+    { name: 'Manasa Pets Mart', href: '/divisions/police-chowki' },
     { name: 'Buddy & Kitty Hospital', href: '/divisions/buddy-kitty' },
     { name: 'B2B Apothecary Wholesale', href: '/divisions/wholesale' },
     { name: 'Petstep Logistics Network', href: '/divisions/petstep' }
