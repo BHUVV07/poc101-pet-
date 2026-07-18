@@ -12,7 +12,7 @@ export interface DivisionDetails {
   googleMapsLink: string;
   servicesAvailable: string[];
   productsAvailable: string[];
-  highlights: { title: string; description: string }[];
+  highlights?: { title: string; description: string }[];
   galleryImages: string[];
   addressLines?: string[];
   showcaseImage?: string;
@@ -28,7 +28,7 @@ export const divisionsData: DivisionDetails[] = [
     name: "Manasa Vet Pharma",
     slug: "garden-area",
     type: "retail",
-    heroImage: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=1200",
+    heroImage: "/gallery/pharma/IMG_8034.JPG",
     overview: "Licensed retail companion medicine pharmacy supplying Garden Area and surrounding local sectors.",
     aboutText: "Manasa Vet Pharma represents our flagship local pharmacy branch. We stock a wide catalog of critical vet medications, specific kidney and heart formulations, recovery pastes, and dermatological anti-parasitic shampoos. Our companion-care pharmacists are ready to guide you on prescription schedules.",
     address: "Garden Area Main Road, Shivamogga, Karnataka 577201",
@@ -47,26 +47,17 @@ export const divisionsData: DivisionDetails[] = [
       "Veterinary Supplements & Multi-vitamins",
       "Therapeutic Kibble & wet nutrition"
     ],
-    highlights: [
-      {
-        title: "Cold Chain Storage",
-        description: "Equipped with diagnostic medical refrigerators to maintain exact vaccine safety."
-      },
-      {
-        title: "DVM Support Desk",
-        description: "Registered companion pharmacists to cross-verify all medical scripts."
-      }
-    ],
     galleryImages: [
-      "https://images.unsplash.com/photo-1576602976047-174e57a47881?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1607619056574-7b8d304f3c6f?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1631549911990-ddf7012a38ec?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&q=80&w=800"
+      "/gallery/pharma/IMG_8034.JPG",
+      "/gallery/pharma/IMG_8015.JPG",
+      "/gallery/pharma/IMG_8008.JPG",
+      "/gallery/pharma/IMG_8010.JPG",
+      "/gallery/pharma/IMG_8006.JPG",
+      "/gallery/pharma/IMG_8028.JPG",
+      "/gallery/pharma/IMG_8029.JPG",
+      "/gallery/pharma/IMG_8017.JPG"
     ],
-    showcaseImage: "https://images.unsplash.com/photo-1576602976047-174e57a47881?auto=format&fit=crop&q=80&w=800"
+    showcaseImage: "/gallery/pharma/IMG_8034.JPG"
   },
   {
     id: "police-chowki",
@@ -75,7 +66,7 @@ export const divisionsData: DivisionDetails[] = [
     type: "retail",
     heroImage: "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=1200",
     overview: "Specialized companion retail division serving the Police Chowki and outer Shivamogga networks.",
-    aboutText: "Serving as a vital pet care hub, Manasa Pets Mart focuses on immediate availability of companion pet therapeutics, premium foods, and accessories. We house specialized prescription lines, gastrointestinal formulations, cardiac treatments, and wellness products under constant quality verification.",
+    aboutText: "At Manasa Pets Mart, we believe every pet deserves the very best. From nutritious pet food and comfortable bedding to grooming essentials, toys, travel accessories, and daily care products, we offer everything you need under one roof. Our carefully selected products ensure quality, safety, and comfort for your beloved companions.",
     address: "Police Chowki Junction, Shivamogga, Karnataka 577201",
     phone: "+91 98765 43212",
     workingHours: "9:00 AM - 9:00 PM (Daily)",
@@ -92,16 +83,7 @@ export const divisionsData: DivisionDetails[] = [
       "Mobility & Joint Pastes",
       "Clinical Diagnostics & Strip Tests"
     ],
-    highlights: [
-      {
-        title: "Instant Verification",
-        description: "Fast script processing backed by digital inventory connection."
-      },
-      {
-        title: "Allergen Support",
-        description: "Extensive inventory of skin barrier and immunotherapeutic formulas."
-      }
-    ],
+    highlights: [],
     galleryImages: [
       "https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?auto=format&fit=crop&q=80&w=800"
     ],
@@ -162,9 +144,19 @@ export const divisionsData: DivisionDetails[] = [
     overview: "Centralized B2B pharmaceutical supply division serving veterinary clinics and trade partners across the region.",
     aboutText: "Our B2B Apothecary division handles trade distribution of core companion medicines, bulk surgical equipment, diagnostic sets, and vaccines. We support licensed veterinary pharmacies, private companion animal clinics, and regional animal health depots.",
     address: "1st Floor, 'Abhijnana, Dr CL Ramanna Rd, beside Kote Police Quarters, KR Puram, Shivamogga, Karnataka 577202",
-    phone: "+91 94802 60646",
+    addressLines: [
+      "1st Floor,",
+      "'Abhijnana',",
+      "Dr. C L Ramanna Road,",
+      "Beside Kote Police Quarters,",
+      "KR Puram,",
+      "Shivamogga – 577202"
+    ],
+    phone: "+91 98869 54762",
     workingHours: "Monday – Saturday\n10:00 AM – 7:30 PM\nSunday Closed",
     googleMapsLink: "https://maps.app.goo.gl/iZGSxt4Bbf5e87rDA",
+    rating: "4.8",
+    reviewCount: "189+",
     servicesAvailable: [
       "Delivery",
       "On-site Services"
@@ -197,14 +189,8 @@ export const divisionsData: DivisionDetails[] = [
       "https://images.unsplash.com/photo-1551825687-f9de1603ed8b?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800"
     ],
-    addressLines: [
-      "1st Floor, 'Abhijnana, Dr CL Ramanna Rd,",
-      "beside Kote Police Quarters, KR Puram, Shivamogga - 577202"
-    ],
     showcaseImage: "https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?auto=format&fit=crop&q=80&w=800",
     googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7744.9393883971825!2d75.57023837546133!3d13.930615911580954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbba93eaf8e7113%3A0xeee0e5bf472c898b!2sManasa%20Vet%20Pharma%20-%20Wholesale!5e0!3m2!1sen!2sin!4v1783838617087!5m2!1sen!2sin",
-    rating: "4.8",
-    reviewCount: "189+",
     description: "Visit our wholesale veterinary pharmacy and distribution centre supplying high-quality medicines, vaccines, supplements, and healthcare products across the region."
   },
   {

@@ -108,7 +108,7 @@ export default function ContactLocation({ data }: ContactLocationProps) {
                   <span className="text-[10px] font-mono font-bold tracking-wider uppercase text-primary block">
                     Working Hours
                   </span>
-                  <p className="text-xs text-text-light font-sans font-medium tracking-wide">
+                  <p className="text-xs text-text-light font-sans font-medium tracking-wide whitespace-pre-line">
                     {data.workingHours}
                   </p>
                 </div>

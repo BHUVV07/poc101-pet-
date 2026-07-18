@@ -9,10 +9,10 @@ export const manasaPetsMartContactData: VisitStoreData = {
     "Police Chowki, Vinoba Nagara, Shivamogga, Karnataka – 577204"
   ],
   phone: "+91 97423 52112",
-  workingHours: "Daily, 10:00 AM onwards",
+  workingHours: "Monday – Saturday\n10:00 AM – 9:00 PM\nSunday\n10:00 AM – 2:00 PM",
   services: [
     "In-store Shopping",
-    "In-store Pickup"
+    "Home Delivery"
   ],
   googleMapsEmbedUrl: "https://maps.google.com/maps?q=Manasa%20Pets%20Mart,%20Shivamogga,%20Karnataka%20577204&t=&z=16&ie=UTF8&iwloc=&output=embed",
   directionsUrl: "https://maps.app.goo.gl/xSfZMnv9cypP2Z5j9"

@@ -3,8 +3,34 @@
 import { use, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Clock, Shield, CheckCircle, ExternalLink, Image as ImageIcon, Pill, Syringe, Heart, Droplet, Briefcase } from 'lucide-react';
+import { MapPin, Phone, Clock, Shield, CheckCircle, ExternalLink, Image as ImageIcon, Pill, Syringe, Heart, Droplet, Briefcase, Bone, Tag, Home, Bath, Check, Dog, Bird, Fish } from 'lucide-react';
 import { divisionsData } from '../../../data/divisions';
+
+function Cow(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M7 11c0 3.866 2.239 7 5 7s5-3.134 5-7V7H7v4z" />
+      <path d="M9 14h6v3a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-3z" />
+      <circle cx="10.5" cy="16" r="0.5" fill="currentColor" />
+      <circle cx="13.5" cy="16" r="0.5" fill="currentColor" />
+      <path d="M7 7c-.5-1.5-1.5-2.5-3-3 1.5 1 2 2.5 2 3z" />
+      <path d="M17 7c.5-1.5 1.5-2.5 3-3-1.5 1-2 2.5-2 3z" />
+      <path d="M7 9C5 9.5 4 11.5 4 13c1.5-.5 2.5-1.5 3-4z" />
+      <path d="M17 9c2 .5 3 2.5 3 4-1.5-.5-2.5-1.5-3-4z" />
+    </svg>
+  );
+}
 import HospitalGallery from '../../../components/HospitalGallery';
 import {
   buddyKittyGalleryTitle,
@@ -16,7 +42,8 @@ import {
   manasaPetsMartGallerySubtitle,
   manasaPetsMartGalleryItems,
 } from '../../../data/manasaPetsMartGallery';
-import VideoGallery from '../../../components/VideoGallery';
+import MediaCarousel from '../../../components/MediaCarousel';
+import HospitalTestimonials from '../../../components/HospitalTestimonials';
 import {
   buddyKittyVideoTitle,
   buddyKittyVideoSubtitle,
@@ -127,38 +154,379 @@ export default function DivisionPageClient({ params }: { params: Promise<{ slug:
             )}
 
             {/* Services & Products lists */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 border-t border-surface pt-8">
-              {/* Services available */}
-              <div className="space-y-4">
-                <h3 className="font-serif text-xl font-bold text-text-dark flex items-center gap-2">
-                  Services Offered
-                </h3>
-                <ul className="space-y-2.5">
-                  {division.servicesAvailable.map((srv, i) => (
-                    <li key={i} className="flex items-start gap-2.5 text-xs text-text-light leading-normal">
-                      <CheckCircle className="h-4.5 w-4.5 text-primary shrink-0 mt-0.5" />
-                      <span>{srv}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            {division.slug === 'police-chowki' ? (
+              <div className="border-t border-surface pt-8 space-y-8">
+                <div className="space-y-3">
+                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-text-dark">
+                    Products Available at Manasa Pets Mart
+                  </h3>
+                  <p className="text-sm text-text-light leading-relaxed">
+                    Discover a wide selection of premium pet food, accessories, grooming essentials, and travel products designed to keep your pets healthy, comfortable, and happy.
+                  </p>
+                </div>
 
-              {/* Products categories */}
-              <div className="space-y-4">
-                <h3 className="font-serif text-xl font-bold text-text-dark flex items-center gap-2">
-                  Materials & Categories
-                </h3>
-                <ul className="space-y-2.5">
-                  {division.productsAvailable.map((prod, i) => (
-                    <li key={i} className="flex items-start gap-2.5 text-xs text-text-light leading-normal">
-                      <CheckCircle className="h-4.5 w-4.5 text-accent shrink-0 mt-0.5" />
-                      <span>{prod}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {/* Card 1: Pet Food & Nutrition */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="p-6 rounded-2xl bg-white border border-surface/50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full group"
+                  >
+                    <div className="space-y-4">
+                      <div className="h-10 w-10 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                        <Bone className="h-5 w-5" />
+                      </div>
+                      <div className="space-y-2">
+                        <h4 className="font-serif text-lg font-bold text-text-dark">
+                          Pet Food & Nutrition
+                        </h4>
+                        <p className="text-xs text-text-light leading-relaxed">
+                          Premium nutrition for dogs, cats, puppies, and kittens from trusted brands.
+                        </p>
+                      </div>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 pt-4 border-t border-surface/20">
+                        {[
+                          'Dry Dog Food', 'Wet Dog Food', 'Dry Cat Food', 'Wet Cat Food',
+                          'Puppy Food', 'Kitten Food', 'Prescription Diets', 'Treats & Biscuits',
+                          'Nutritional Supplements', 'Milk Replacers'
+                        ].map((item) => (
+                          <li key={item} className="flex items-center gap-2 text-xs text-text-light font-medium leading-none">
+                            <span className="h-4.5 w-4.5 rounded-full bg-accent/15 border border-accent/20 flex items-center justify-center shrink-0">
+                              <Check className="h-3 w-3 text-accent" />
+                            </span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
 
+                  {/* Card 2: Pet Accessories */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="p-6 rounded-2xl bg-white border border-surface/50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full group"
+                  >
+                    <div className="space-y-4">
+                      <div className="h-10 w-10 rounded-xl bg-secondary/15 border border-secondary/25 text-secondary flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                        <Tag className="h-5 w-5" />
+                      </div>
+                      <div className="space-y-2">
+                        <h4 className="font-serif text-lg font-bold text-text-dark">
+                          Pet Accessories
+                        </h4>
+                        <p className="text-xs text-text-light leading-relaxed">
+                          Everything your pet needs for comfort, play, and everyday care.
+                        </p>
+                      </div>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 pt-4 border-t border-surface/20">
+                        {[
+                          'Pet Beds & Cushions', 'Collars & Leashes', 'Harnesses', 'Dog Chains',
+                          'Muzzles', 'Pet Clothing', 'Toys & Chew Toys', 'Feeding Bowls',
+                          'Automatic Feeders', 'ID Tags & Accessories'
+                        ].map((item) => (
+                          <li key={item} className="flex items-center gap-2 text-xs text-text-light font-medium leading-none">
+                            <span className="h-4.5 w-4.5 rounded-full bg-accent/15 border border-accent/20 flex items-center justify-center shrink-0">
+                              <Check className="h-3 w-3 text-accent" />
+                            </span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+
+                  {/* Card 3: Housing & Travel Essentials */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="p-6 rounded-2xl bg-white border border-surface/50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full group"
+                  >
+                    <div className="space-y-4">
+                      <div className="h-10 w-10 rounded-xl bg-accent/10 border border-accent/20 text-accent flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                        <Home className="h-5 w-5" />
+                      </div>
+                      <div className="space-y-2">
+                        <h4 className="font-serif text-lg font-bold text-text-dark">
+                          Housing & Travel Essentials
+                        </h4>
+                        <p className="text-xs text-text-light leading-relaxed">
+                          Comfortable home and travel solutions for pets of all sizes.
+                        </p>
+                      </div>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 pt-4 border-t border-surface/20">
+                        {[
+                          'Dog Cages', 'Pet Crates', 'Cat Carriers', 'Travel Bags',
+                          'Kennels', 'Litter Boxes', 'Cat Litter', 'Feeding Stations',
+                          'Training Pads', 'Travel Accessories'
+                        ].map((item) => (
+                          <li key={item} className="flex items-center gap-2 text-xs text-text-light font-medium leading-none">
+                            <span className="h-4.5 w-4.5 rounded-full bg-accent/15 border border-accent/20 flex items-center justify-center shrink-0">
+                              <Check className="h-3 w-3 text-accent" />
+                            </span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+
+                  {/* Card 4: Grooming & Hygiene */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="p-6 rounded-2xl bg-white border border-surface/50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full group"
+                  >
+                    <div className="space-y-4">
+                      <div className="h-10 w-10 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                        <Bath className="h-5 w-5" />
+                      </div>
+                      <div className="space-y-2">
+                        <h4 className="font-serif text-lg font-bold text-text-dark">
+                          Grooming & Hygiene
+                        </h4>
+                        <p className="text-xs text-text-light leading-relaxed">
+                          Daily grooming products to keep your pets clean, healthy, and well-groomed.
+                        </p>
+                      </div>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 pt-4 border-t border-surface/20">
+                        {[
+                          'Pet Shampoos & Conditioners', 'Tick & Flea Care', 'Grooming Brushes & Combs', 'Nail Clippers',
+                          'Ear Cleaning Solutions', 'Dental Care Kits', 'Paw Care Products', 'Pet Wipes',
+                          'Deodorizing Sprays', 'Grooming Gloves'
+                        ].map((item) => (
+                          <li key={item} className="flex items-center gap-2 text-xs text-text-light font-medium leading-none">
+                            <span className="h-4.5 w-4.5 rounded-full bg-accent/15 border border-accent/20 flex items-center justify-center shrink-0">
+                              <Check className="h-3 w-3 text-accent" />
+                            </span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            ) : division.slug === 'garden-area' ? (
+              <div className="border-t border-surface pt-8 space-y-8">
+                {/* Title & Subtitle */}
+                <div className="space-y-3">
+                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-text-dark">
+                    Products Available
+                  </h3>
+                  <p className="text-sm text-text-light leading-relaxed">
+                    We provide veterinary medicines, vaccines, supplements, and healthcare solutions for a wide range of companion animals, livestock, poultry, and aquaculture.
+                  </p>
+                </div>
+
+                {/* 2x2 Grid of 4 Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Card 1: Companion Animals */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="p-6 sm:p-8 rounded-3xl bg-[#FAF7F2] border border-surface/50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col h-full justify-between group"
+                  >
+                    <div className="space-y-6">
+                      <div className="space-y-4">
+                        <div className="h-12 w-12 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                          <Dog className="h-6 w-6" />
+                        </div>
+                        <div className="space-y-2">
+                          <h4 className="font-serif text-lg sm:text-xl font-bold text-text-dark">
+                            Companion Animals
+                          </h4>
+                          <p className="text-xs sm:text-sm text-text-light leading-relaxed">
+                            Veterinary medicines and healthcare solutions for household pets.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="space-y-3 border-t border-surface/30 pt-4">
+                        <span className="font-sans text-[10px] uppercase tracking-wider font-bold text-primary block">
+                          🐾 Medicines Available For
+                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {['Dogs', 'Cats', 'Rabbits', 'Turtles', 'Pet Birds'].map((item) => (
+                            <span 
+                              key={item} 
+                              className="inline-flex items-center px-3 py-1 rounded-full bg-primary/5 text-primary border border-primary/15 text-xs font-semibold tracking-wide"
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Card 2: Livestock Animals */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="p-6 sm:p-8 rounded-3xl bg-[#FAF7F2] border border-surface/50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col h-full justify-between group"
+                  >
+                    <div className="space-y-6">
+                      <div className="space-y-4">
+                        <div className="h-12 w-12 rounded-xl bg-secondary/15 border border-secondary/25 text-secondary flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                          <Cow className="h-6 w-6" />
+                        </div>
+                        <div className="space-y-2">
+                          <h4 className="font-serif text-lg sm:text-xl font-bold text-text-dark">
+                            Livestock Animals
+                          </h4>
+                          <p className="text-xs sm:text-sm text-text-light leading-relaxed">
+                            Healthcare solutions for dairy and farm animals.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="space-y-3 border-t border-surface/30 pt-4">
+                        <span className="font-sans text-[10px] uppercase tracking-wider font-bold text-secondary block">
+                          🐾 Medicines Available For
+                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {['Cattle', 'Buffaloes', 'Goats', 'Sheep'].map((item) => (
+                            <span 
+                              key={item} 
+                              className="inline-flex items-center px-3 py-1 rounded-full bg-secondary/10 text-secondary border border-secondary/20 text-xs font-semibold tracking-wide"
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Card 3: Poultry */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="p-6 sm:p-8 rounded-3xl bg-[#FAF7F2] border border-surface/50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col h-full justify-between group"
+                  >
+                    <div className="space-y-6">
+                      <div className="space-y-4">
+                        <div className="h-12 w-12 rounded-xl bg-accent/20 border border-accent/30 text-accent flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                          <Bird className="h-6 w-6" />
+                        </div>
+                        <div className="space-y-2">
+                          <h4 className="font-serif text-lg sm:text-xl font-bold text-text-dark">
+                            Poultry
+                          </h4>
+                          <p className="text-xs sm:text-sm text-text-light leading-relaxed">
+                            Veterinary healthcare products for commercial and backyard poultry.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="space-y-3 border-t border-surface/30 pt-4">
+                        <span className="font-sans text-[10px] uppercase tracking-wider font-bold text-accent block">
+                          🐾 Medicines Available For
+                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {['Broilers', 'Layers', 'Country Chicken', 'Ducks', 'Turkeys'].map((item) => (
+                            <span 
+                              key={item} 
+                              className="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 text-accent border border-accent/20 text-xs font-semibold tracking-wide"
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Card 4: Fisheries & Aquaculture */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="p-6 sm:p-8 rounded-3xl bg-[#FAF7F2] border border-surface/50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col h-full justify-between group"
+                  >
+                    <div className="space-y-6">
+                      <div className="space-y-4">
+                        <div className="h-12 w-12 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                          <Fish className="h-6 w-6" />
+                        </div>
+                        <div className="space-y-2">
+                          <h4 className="font-serif text-lg sm:text-xl font-bold text-text-dark">
+                            Fisheries & Aquaculture
+                          </h4>
+                          <p className="text-xs sm:text-sm text-text-light leading-relaxed">
+                            Veterinary healthcare solutions for aquaculture and aquatic farming.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="space-y-3 border-t border-surface/30 pt-4">
+                        <span className="font-sans text-[10px] uppercase tracking-wider font-bold text-primary block">
+                          🐾 Medicines Available For
+                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {['Freshwater Fish', 'Ornamental Fish', 'Shrimp', 'Prawns'].map((item) => (
+                            <span 
+                              key={item} 
+                              className="inline-flex items-center px-3 py-1 rounded-full bg-primary/5 text-primary border border-primary/15 text-xs font-semibold tracking-wide"
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 border-t border-surface pt-8">
+                {/* Services available */}
+                <div className="space-y-4">
+                  <h3 className="font-serif text-xl font-bold text-text-dark flex items-center gap-2">
+                    Services Offered
+                  </h3>
+                  <ul className="space-y-2.5">
+                    {division.servicesAvailable.map((srv, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-xs text-text-light leading-normal">
+                        <CheckCircle className="h-4.5 w-4.5 text-primary shrink-0 mt-0.5" />
+                        <span>{srv}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Products categories */}
+                <div className="space-y-4">
+                  <h3 className="font-serif text-xl font-bold text-text-dark flex items-center gap-2">
+                    Materials & Categories
+                  </h3>
+                  <ul className="space-y-2.5">
+                    {division.productsAvailable.map((prod, i) => (
+                      <li key={i} className="flex items-start gap-2.5 text-xs text-text-light leading-normal">
+                        <CheckCircle className="h-4.5 w-4.5 text-accent shrink-0 mt-0.5" />
+                        <span>{prod}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
           </div>
 
           {division.showcaseImage ? (
@@ -256,11 +624,23 @@ export default function DivisionPageClient({ params }: { params: Promise<{ slug:
 
       {/* New Reusable Hospital Video Tour Section (Exclusively for buddy-kitty) */}
       {division.slug === 'buddy-kitty' && (
-        <VideoGallery
+        <MediaCarousel
           title={buddyKittyVideoTitle}
           subtitle={buddyKittyVideoSubtitle}
-          items={buddyKittyVideoItems}
+          items={buddyKittyVideoItems.map(item => ({
+            id: item.id,
+            title: item.title,
+            description: item.description,
+            thumbnail: item.thumbnail,
+            videoUrl: item.video,
+            duration: item.duration
+          }))}
         />
+      )}
+
+      {/* Hospital Testimonials Section (Exclusively for buddy-kitty) */}
+      {division.slug === 'buddy-kitty' && (
+        <HospitalTestimonials />
       )}
 
       {/* New Reusable Contact & Location Section (Exclusively for buddy-kitty) */}
@@ -317,10 +697,10 @@ export default function DivisionPageClient({ params }: { params: Promise<{ slug:
                     <div className="h-10 w-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
                       <IconComponent className="h-5 w-5" />
                     </div>
-                    <h4 className="font-serif text-lg font-bold text-text-dark">
+                    <h4 className="font-serif text-xl font-bold text-text-dark">
                       {cat.name}
                     </h4>
-                    <p className="text-xs text-text-light leading-relaxed">
+                    <p className="text-xs text-text-light leading-relaxed line-clamp-2">
                       {cat.description}
                     </p>
                   </div>
@@ -337,7 +717,7 @@ export default function DivisionPageClient({ params }: { params: Promise<{ slug:
           title={manasaVetPharmaGalleryTitle}
           subtitle={manasaVetPharmaGallerySubtitle}
           items={manasaVetPharmaGalleryItems}
-          showCaptions={false}
+          showCaptions={true}
         />
       )}
 

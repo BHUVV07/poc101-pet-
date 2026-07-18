@@ -25,6 +25,7 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
+    { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
     { name: 'Products', href: '/products' },
     { name: 'Blog', href: '/blog' },
@@ -91,7 +92,7 @@ export default function Navbar() {
             <div className="flex items-center">
               <Link href="/" className="group flex items-center gap-1.5">
                 <span className="font-serif text-2xl sm:text-3xl font-bold tracking-wide text-primary">
-                  Manasa Vet Pharma
+                  Manasa Vet Ecosystem
                 </span>
                 <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
               </Link>
@@ -156,7 +157,7 @@ export default function Navbar() {
             >
               <div>
                 <div className="flex items-center justify-between mb-8">
-                  <span className="font-serif text-xl font-bold text-primary">Manasa Vet Pharma</span>
+                  <span className="font-serif text-xl font-bold text-primary">Manasa Vet Ecosystem</span>
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-1 rounded-full hover:bg-surface text-text-dark"
@@ -207,7 +208,7 @@ export default function Navbar() {
               {/* Mobile Drawer Bottom Info */}
               <div className="border-t border-surface pt-6 space-y-4">
                 <div className="text-center text-xs text-text-light leading-normal">
-                  © {new Date().getFullYear()} Manasa Vet Pharma. All Rights Reserved.
+                  © {new Date().getFullYear()} Manasa Vet Ecosystem. All Rights Reserved.
                 </div>
               </div>
             </motion.div>
