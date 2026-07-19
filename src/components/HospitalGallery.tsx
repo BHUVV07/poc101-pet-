@@ -5,6 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight, ImageIcon } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import Lightbox from './Lightbox';
+import GalleryCard from './GalleryCard';
 import { GalleryItem } from '../data/buddyKittyGallery';
 
 interface HospitalGalleryProps {
@@ -12,6 +13,11 @@ interface HospitalGalleryProps {
   subtitle: string;
   items: GalleryItem[];
   showCaptions?: boolean;
+  loop?: boolean;
+  align?: 'start' | 'center' | 'end';
+  dragFree?: boolean;
+  autoplay?: boolean;
+  autoplayDelay?: number;
 }
 
 export default function HospitalGallery({
@@ -19,12 +25,17 @@ export default function HospitalGallery({
   subtitle,
   items,
   showCaptions = true,
+  loop = false,
+  align = 'start',
+  dragFree = false,
+  autoplay = false,
+  autoplayDelay = 3000,
 }: HospitalGalleryProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: 'start',
-    loop: false,
+    align,
+    loop,
     skipSnaps: false,
-    dragFree: false,
+    dragFree,
   });
 
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
@@ -64,6 +75,59 @@ export default function HospitalGallery({
       emblaApi.off('reInit', onSelect);
     };
   }, [emblaApi, onSelect]);
+
+  useEffect(() => {
+    if (!emblaApi || !autoplay) return;
+
+    let intervalId: NodeJS.Timeout | null = null;
+    let isPaused = false;
+
+    const startAutoplay = () => {
+      stopAutoplay();
+      intervalId = setInterval(() => {
+        if (!isPaused && emblaApi) {
+          emblaApi.scrollNext();
+        }
+      }, autoplayDelay);
+    };
+
+    const stopAutoplay = () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    };
+
+    startAutoplay();
+
+    const rootNode = emblaApi.rootNode();
+    const onMouseEnter = () => {
+      isPaused = true;
+    };
+    const onMouseLeave = () => {
+      isPaused = false;
+    };
+
+    if (rootNode) {
+      rootNode.addEventListener('mouseenter', onMouseEnter);
+      rootNode.addEventListener('mouseleave', onMouseLeave);
+    }
+
+    emblaApi.on('pointerDown', stopAutoplay);
+    emblaApi.on('pointerUp', startAutoplay);
+
+    return () => {
+      stopAutoplay();
+      if (rootNode) {
+        rootNode.removeEventListener('mouseenter', onMouseEnter);
+        rootNode.removeEventListener('mouseleave', onMouseLeave);
+      }
+      if (emblaApi) {
+        emblaApi.off('pointerDown', stopAutoplay);
+        emblaApi.off('pointerUp', startAutoplay);
+      }
+    };
+  }, [emblaApi, autoplay, autoplayDelay]);
 
   const openLightbox = (index: number) => {
     setActiveImageIndex(index);
@@ -146,44 +210,19 @@ export default function HospitalGallery({
             {items.map((item, index) => (
               <div
                 key={item.id}
-                className="pl-6 min-w-0 flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_31%] shrink-0"
+                className="pl-6 min-w-0 flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] shrink-0"
               >
-                {/* Image Card as a Button for A11y */}
-                <button
-                  type="button"
-                  ref={(el) => {
+                <GalleryCard
+                  image={item.image}
+                  title={item.title}
+                  description={item.description}
+                  id={item.id}
+                  showCaptions={showCaptions}
+                  onClick={() => openLightbox(index)}
+                  buttonRef={(el) => {
                     triggerButtonRefs.current[index] = el;
                   }}
-                  onClick={() => openLightbox(index)}
-                  aria-haspopup="dialog"
-                  aria-label={`View full size image of ${item.title}`}
-                  className="w-full flex flex-col h-[420px] sm:h-[460px] lg:h-[500px] text-left rounded-2xl overflow-hidden bg-surface/20 border border-surface/30 shadow-sm transition-all duration-300 motion-safe:hover:-translate-y-2 hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none cursor-pointer group"
-                >
-                  {/* Image wrapper */}
-                  <div className="w-full flex-1 overflow-hidden relative bg-surface/10">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-105"
-                    />
-                  </div>
-
-                  {/* Caption details */}
-                  {showCaptions && (
-                    <div className="p-5 bg-surface/10 border-t border-surface/20 space-y-1.5 shrink-0">
-                      <span className="text-[10px] tracking-widest font-mono uppercase text-primary font-bold">
-                        {item.id.replace(/-/g, ' ')}
-                      </span>
-                      <h3 className="font-serif text-lg md:text-xl font-bold text-text-dark leading-tight group-hover:text-primary transition-colors">
-                        {item.title}
-                      </h3>
-                      <p className="text-text-light text-xs md:text-sm font-sans line-clamp-1 leading-normal">
-                        {item.description}
-                      </p>
-                    </div>
-                  )}
-                </button>
+                />
               </div>
             ))}
           </div>
@@ -198,6 +237,7 @@ export default function HospitalGallery({
         onClose={closeLightbox}
         onPrev={navigatePrevLightbox}
         onNext={navigateNextLightbox}
+        showMetadata={showCaptions}
       />
     </motion.section>
   );

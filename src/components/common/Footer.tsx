@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { companyDetails } from '../../data/company';
 
 export default function Footer() {
@@ -9,8 +9,7 @@ export default function Footer() {
     { name: 'Manasa Vet Pharma', href: '/divisions/garden-area' },
     { name: 'Manasa Pets Mart', href: '/divisions/police-chowki' },
     { name: 'Buddy & Kitty Hospital', href: '/divisions/buddy-kitty' },
-    { name: 'B2B Apothecary Wholesale', href: '/divisions/wholesale' },
-    { name: 'Petstep Logistics Network', href: '/divisions/petstep' }
+    { name: 'Manasa Vet Pharma-Wholesale', href: '/divisions/wholesale' }
   ];
 
   const infoLinks = [
@@ -66,18 +65,24 @@ export default function Footer() {
               </ul>
             </div>
             
-            <div className="border-t border-surface/40 pt-4 space-y-2 text-xs text-text-light">
-              <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-primary shrink-0" />
-                <span>{companyDetails.headquarters}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-primary shrink-0" />
-                <span className="font-mono">{companyDetails.globalPhone}</span>
-              </div>
+            <div className="border-t border-surface/40 pt-4 space-y-3 text-xs text-text-light">
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-primary shrink-0" />
                 <span className="font-mono">{companyDetails.globalEmail}</span>
+              </div>
+              <div className="flex items-center gap-4 pt-1">
+                <a href="#" aria-label="Instagram" className="text-text-light hover:text-primary transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4.5 w-4.5">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                  </svg>
+                </a>
+                <a href="#" aria-label="Facebook" className="text-text-light hover:text-primary transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4.5 w-4.5">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                  </svg>
+                </a>
               </div>
             </div>
           </div>

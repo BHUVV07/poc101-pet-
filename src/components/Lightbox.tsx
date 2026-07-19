@@ -11,6 +11,7 @@ interface LightboxProps {
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
+  showMetadata?: boolean;
 }
 
 export default function Lightbox({
@@ -20,6 +21,7 @@ export default function Lightbox({
   onClose,
   onPrev,
   onNext,
+  showMetadata = true,
 }: LightboxProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -160,25 +162,27 @@ export default function Lightbox({
         </button>
 
         {/* Bottom Metadata Info Card */}
-        <div
-          className="absolute bottom-0 inset-x-0 p-8 text-center bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col items-center justify-end z-10"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <motion.div
-            key={currentItem.title}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-            className="max-w-xl space-y-1.5"
+        {showMetadata && (currentItem.title || currentItem.description) && (
+          <div
+            className="absolute bottom-0 inset-x-0 p-8 text-center bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col items-center justify-end z-10"
+            onClick={(e) => e.stopPropagation()}
           >
-            <h4 className="text-white text-lg md:text-xl font-bold font-serif">
-              {currentItem.title}
-            </h4>
-            <p className="text-zinc-300 text-xs md:text-sm font-sans tracking-wide leading-relaxed">
-              {currentItem.description}
-            </p>
-          </motion.div>
-        </div>
+            <motion.div
+              key={currentItem.title}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+              className="max-w-xl space-y-1.5"
+            >
+              <h4 className="text-white text-lg md:text-xl font-bold font-serif">
+                {currentItem.title}
+              </h4>
+              <p className="text-zinc-300 text-xs md:text-sm font-sans tracking-wide leading-relaxed">
+                {currentItem.description}
+              </p>
+            </motion.div>
+          </div>
+        )}
       </div>
     </AnimatePresence>
   );

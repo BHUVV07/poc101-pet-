@@ -46,11 +46,5 @@ export const manasaVetPharmaGalleryItems: GalleryItem[] = [
     image: "/gallery/pharma/IMG_8029.JPG",
     title: "Premium Pet Nutrition",
     description: "Image with premium dog food bags placed in the foreground and the pharmacy visible in the background."
-  },
-  {
-    id: "pharma-featured-products",
-    image: "/gallery/pharma/IMG_8017.JPG",
-    title: "Featured Veterinary Products",
-    description: "Close-up image showing veterinary supplements, bottles, and healthcare products arranged on the shelf."
   }
 ];

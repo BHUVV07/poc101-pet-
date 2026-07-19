@@ -11,12 +11,12 @@ export interface CompanyDetails {
 }
 
 export const companyDetails: CompanyDetails = {
-  name: "Manasa Vet Pharma",
+  name: "Manasa Vet Ecosystem",
   tagline: "Precision Veterinary Pharmaceuticals & Companion Medical Care",
   globalEmail: "contact@manasavetpharma.com",
   globalPhone: "+91 98765 43210",
   headquarters: "GSKM Road, Shivamogga, Karnataka, India",
-  aboutOverview: "Manasa Vet Pharma is the leading animal healthcare network in Shivamogga, managing integrated retail pharmacies, a state-of-the-art veterinary hospital, bulk apothecary distribution, and reliable cold-chain vaccine logistics. We are committed to supplying certified diagnostics and therapeutic treatments for your loyal companions and professional veterinary clinics.",
+  aboutOverview: "Manasa Vet Ecosystem is the leading animal healthcare network in Shivamogga, managing integrated retail pharmacies, a state-of-the-art veterinary hospital, bulk apothecary distribution, and reliable cold-chain vaccine logistics. We are committed to supplying certified diagnostics and therapeutic treatments for your loyal companions and professional veterinary clinics.",
   mission: "To advance the standard of veterinary healthcare by delivering certified therapeutic solutions, clinical excellence, and high-fidelity cold-chain logistics across the region.",
   vision: "To be the primary trusted ecosystem for clinical diagnostics, specialized pet pharmaceuticals, and wholesale veterinarian supplies.",
   values: [

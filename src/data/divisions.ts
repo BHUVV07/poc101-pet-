@@ -64,7 +64,7 @@ export const divisionsData: DivisionDetails[] = [
     name: "Manasa Pets Mart",
     slug: "police-chowki",
     type: "retail",
-    heroImage: "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=1200",
+    heroImage: "/gallery/mart/hero-banner.jpg",
     overview: "Specialized companion retail division serving the Police Chowki and outer Shivamogga networks.",
     aboutText: "At Manasa Pets Mart, we believe every pet deserves the very best. From nutritious pet food and comfortable bedding to grooming essentials, toys, travel accessories, and daily care products, we offer everything you need under one roof. Our carefully selected products ensure quality, safety, and comfort for your beloved companions.",
     address: "Police Chowki Junction, Shivamogga, Karnataka 577201",
@@ -94,7 +94,7 @@ export const divisionsData: DivisionDetails[] = [
     name: "Buddy & Kitty – Multispeciality Pet Hospital and Grooming",
     slug: "buddy-kitty",
     type: "hospital",
-    heroImage: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=1200",
+    heroImage: "/gallery/hospital/hero-banner.jpg",
     overview: "State-of-the-art Multi-Speciality Veterinary Hospital with sterile surgery, in-house lab, and diagnostics.",
     aboutText: "Buddy & Kitty – Multispeciality Pet Hospital and Grooming represents our clinical care center. We host advanced physical therapy rooms, diagnostic digital radiology, soft-tissue surgical suites, and dedicated vaccination lines. We consolidate senior veterinary surgeons and clinical specialists to deliver trusted treatment profiles.",
     address: "100 Ft Road, near Kariyanna Building, Shivamogga, Karnataka 577201",
@@ -133,14 +133,14 @@ export const divisionsData: DivisionDetails[] = [
     galleryImages: [
       "https://images.unsplash.com/photo-1541599540903-216a46ca1ad0?auto=format&fit=crop&q=80&w=800"
     ],
-    showcaseImage: "/hospital_showcase.png"
+    showcaseImage: "/gallery/hospital/reception-showcase.jpg"
   },
   {
     id: "wholesale",
     name: "Manasa Vet Pharma – Wholesale",
     slug: "wholesale",
     type: "wholesale",
-    heroImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1200",
+    heroImage: "/gallery/wholesale/hero-banner.jpg",
     overview: "Centralized B2B pharmaceutical supply division serving veterinary clinics and trade partners across the region.",
     aboutText: "Our B2B Apothecary division handles trade distribution of core companion medicines, bulk surgical equipment, diagnostic sets, and vaccines. We support licensed veterinary pharmacies, private companion animal clinics, and regional animal health depots.",
     address: "1st Floor, 'Abhijnana, Dr CL Ramanna Rd, beside Kote Police Quarters, KR Puram, Shivamogga, Karnataka 577202",
@@ -180,16 +180,16 @@ export const divisionsData: DivisionDetails[] = [
       }
     ],
     galleryImages: [
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1551825687-f9de1603ed8b?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800"
+      "/gallery/wholesale/01.jpg",
+      "/gallery/wholesale/02.jpg",
+      "/gallery/wholesale/03.jpg",
+      "/gallery/wholesale/04.jpg",
+      "/gallery/wholesale/05.jpg",
+      "/gallery/wholesale/06.jpg",
+      "/gallery/wholesale/07.jpg",
+      "/gallery/wholesale/08.jpg"
     ],
-    showcaseImage: "https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?auto=format&fit=crop&q=80&w=800",
+    showcaseImage: "/gallery/wholesale/about-division.jpg",
     googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7744.9393883971825!2d75.57023837546133!3d13.930615911580954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbba93eaf8e7113%3A0xeee0e5bf472c898b!2sManasa%20Vet%20Pharma%20-%20Wholesale!5e0!3m2!1sen!2sin!4v1783838617087!5m2!1sen!2sin",
     description: "Visit our wholesale veterinary pharmacy and distribution centre supplying high-quality medicines, vaccines, supplements, and healthcare products across the region."
   },

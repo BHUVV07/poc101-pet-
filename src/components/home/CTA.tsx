@@ -34,7 +34,7 @@ export default function CTA() {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 w-full sm:w-auto">
             <a
-              href="/services"
+              href="tel:8310881168"
               className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full bg-secondary hover:bg-secondary/95 text-text-dark px-8 py-4 text-xs sm:text-sm font-semibold shadow-md hover:shadow-lg transition-all hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-secondary"
             >
               <Calendar className="h-4.5 w-4.5" />

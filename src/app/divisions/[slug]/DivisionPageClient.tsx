@@ -2,7 +2,8 @@
 
 import { use, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { MapPin, Phone, Clock, Shield, CheckCircle, ExternalLink, Image as ImageIcon, Pill, Syringe, Heart, Droplet, Briefcase, Bone, Tag, Home, Bath, Check, Dog, Bird, Fish } from 'lucide-react';
 import { divisionsData } from '../../../data/divisions';
 
@@ -42,13 +43,9 @@ import {
   manasaPetsMartGallerySubtitle,
   manasaPetsMartGalleryItems,
 } from '../../../data/manasaPetsMartGallery';
-import MediaCarousel from '../../../components/MediaCarousel';
+import { wholesaleImages } from '../../../data/wholesaleImages';
+import HospitalVideoTour from '../../../components/HospitalVideoTour';
 import HospitalTestimonials from '../../../components/HospitalTestimonials';
-import {
-  buddyKittyVideoTitle,
-  buddyKittyVideoSubtitle,
-  buddyKittyVideoItems,
-} from '../../../data/buddyKittyVideos';
 import ContactLocation from '../../../components/ContactLocation';
 import { buddyKittyContactData } from '../../../data/buddyKittyContact';
 import VisitStore from '../../../components/VisitStore';
@@ -68,6 +65,9 @@ import {
 export default function DivisionPageClient({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const division = divisionsData.find(d => d.slug === slug) || null;
+
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 500], [0, 150]);
 
   useEffect(() => {
     if (division) {
@@ -95,15 +95,51 @@ export default function DivisionPageClient({ params }: { params: Promise<{ slug:
       <title>{`${division.name} | Manasa Vet Pharma`}</title>
       <meta property="og:title" content={`${division.name} | Manasa Vet Pharma`} />
       <meta property="og:description" content={division.overview} />
-      {/* Hero Banner Section */}
-      <section className="relative h-[55vh] min-h-[400px] w-full overflow-hidden bg-zinc-950 flex items-center justify-center">
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-45 scale-103"
-          style={{ backgroundImage: `url(${division.heroImage})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent" />
+      <section className={`relative w-full overflow-hidden bg-zinc-950 flex items-center justify-center ${
+        division.slug === 'buddy-kitty' ? 'h-[80vh] min-h-[600px]' : 'h-[55vh] min-h-[400px]'
+      }`}>
+        {division.slug === 'buddy-kitty' ? (
+          <motion.div 
+            style={{ y: heroY }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="absolute inset-0 h-[120%] w-full"
+          >
+            <Image
+              src="/gallery/hospital/hero-banner.jpg"
+              alt="Buddy & Kitty Multispeciality Pet Hospital"
+              fill
+              priority
+              className="object-cover object-top"
+            />
+          </motion.div>
+        ) : (
+          <div 
+            className={`absolute inset-0 bg-cover scale-103 transition-all duration-500 ${
+              division.slug === 'police-chowki' ? 'bg-[50%_15%] opacity-100' :
+              division.slug === 'wholesale' ? 'bg-center opacity-100' : 'bg-center opacity-45'
+            }`}
+            style={{ backgroundImage: `url(${division.heroImage})` }}
+          />
+        )}
+        {division.slug === 'police-chowki' ? (
+          <>
+            <div className="absolute inset-0 bg-black/35" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+          </>
+        ) : division.slug === 'wholesale' ? (
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/20" />
+        ) : division.slug === 'buddy-kitty' ? (
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent" />
+        )}
         
-        <div className="relative mx-auto max-w-4xl px-4 text-center space-y-4 text-white">
+        <div className={`relative mx-auto max-w-4xl px-4 text-center space-y-4 text-white transition-all duration-500 ${
+          division.slug === 'police-chowki' ? 'translate-y-[90px]' :
+          division.slug === 'buddy-kitty' ? 'translate-y-[80px]' : ''
+        }`}>
           <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/20 border border-primary/30 text-primary px-4 py-1 text-xs uppercase tracking-widest font-bold font-mono">
             {division.type.toUpperCase()} DIVISION
           </span>
@@ -531,14 +567,22 @@ export default function DivisionPageClient({ params }: { params: Promise<{ slug:
 
           {division.showcaseImage ? (
             <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: division.slug === 'wholesale' ? 0 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="w-full rounded-lg overflow-hidden border border-surface/20 shadow-sm"
+              className={`w-full rounded-lg overflow-hidden border border-surface/20 shadow-sm ${
+                division.slug === 'buddy-kitty' ? 'lg:self-center' : ''
+              }`}
             >
               <img 
-                src={division.showcaseImage}
-                alt={`${division.name} Showcase`}
+                src={division.slug === 'buddy-kitty' ? "/gallery/hospital/reception-showcase.jpg" : division.showcaseImage}
+                alt={
+                  division.slug === 'buddy-kitty' ? "Buddy & Kitty Reception Area" :
+                  division.slug === 'wholesale' ? "Manasa Vet Pharma Wholesale Product Showcase" :
+                  `${division.name} Showcase`
+                }
+                loading="lazy"
                 className="w-full h-[350px] sm:h-[450px] lg:h-[520px] object-cover transition-transform duration-300 hover:scale-103"
               />
             </motion.div>
@@ -604,6 +648,11 @@ export default function DivisionPageClient({ params }: { params: Promise<{ slug:
           title={buddyKittyGalleryTitle}
           subtitle={buddyKittyGallerySubtitle}
           items={buddyKittyGalleryItems}
+          showCaptions={false}
+          loop={true}
+          dragFree={true}
+          autoplay={true}
+          autoplayDelay={3000}
         />
       )}
 
@@ -614,6 +663,10 @@ export default function DivisionPageClient({ params }: { params: Promise<{ slug:
           subtitle={manasaPetsMartGallerySubtitle}
           items={manasaPetsMartGalleryItems}
           showCaptions={false}
+          loop={true}
+          dragFree={true}
+          autoplay={true}
+          autoplayDelay={3000}
         />
       )}
 
@@ -624,18 +677,7 @@ export default function DivisionPageClient({ params }: { params: Promise<{ slug:
 
       {/* New Reusable Hospital Video Tour Section (Exclusively for buddy-kitty) */}
       {division.slug === 'buddy-kitty' && (
-        <MediaCarousel
-          title={buddyKittyVideoTitle}
-          subtitle={buddyKittyVideoSubtitle}
-          items={buddyKittyVideoItems.map(item => ({
-            id: item.id,
-            title: item.title,
-            description: item.description,
-            thumbnail: item.thumbnail,
-            videoUrl: item.video,
-            duration: item.duration
-          }))}
-        />
+        <HospitalVideoTour />
       )}
 
       {/* Hospital Testimonials Section (Exclusively for buddy-kitty) */}
@@ -718,6 +760,10 @@ export default function DivisionPageClient({ params }: { params: Promise<{ slug:
           subtitle={manasaVetPharmaGallerySubtitle}
           items={manasaVetPharmaGalleryItems}
           showCaptions={true}
+          loop={true}
+          dragFree={true}
+          autoplay={true}
+          autoplayDelay={3000}
         />
       )}
 
@@ -731,22 +777,17 @@ export default function DivisionPageClient({ params }: { params: Promise<{ slug:
         <HospitalGallery
           title="Wholesale Gallery"
           subtitle="Explore our wholesale veterinary pharmacy and distribution centre supplying high-quality medicines, vaccines, supplements, and healthcare products across the region."
-          items={division.galleryImages.map((img, idx) => ({
+          items={wholesaleImages.map((img, idx) => ({
             id: `wholesale-gallery-${idx}`,
             image: img,
-            title: [
-              "Warehouse",
-              "Medicine Storage",
-              "Bulk Inventory",
-              "Distribution Area",
-              "Packaging Section",
-              "Product Shelves",
-              "Dispatch Counter",
-              "Facility Overview"
-            ][idx] || `Facility Photo ${idx + 1}`,
-            description: `Wholesale veterinary pharmacy and distribution facility overview.`
+            title: "",
+            description: ""
           }))}
           showCaptions={false}
+          loop={true}
+          dragFree={true}
+          autoplay={true}
+          autoplayDelay={3000}
         />
       )}
 

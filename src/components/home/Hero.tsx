@@ -138,15 +138,15 @@ export default function Hero() {
               variants={itemVariants}
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2 w-full sm:w-auto"
             >
-              <Link
-                href="/services"
+              <a
+                href="tel:8310881168"
                 className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full bg-primary hover:bg-primary/95 text-white px-8 py-4 text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary"
                 aria-label="Book a clinical consultation appointment"
               >
                 <Calendar className="h-4.5 w-4.5" />
                 Book Consultation
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </a>
               
               <a
                 href="tel:9886954762"

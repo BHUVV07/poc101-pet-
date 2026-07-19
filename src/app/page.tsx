@@ -7,7 +7,6 @@ import Businesses from '../components/home/Businesses';
 import WhyChooseUs from '../components/home/WhyChooseUs';
 import Services from '../components/home/Services';
 import Brands from '../components/home/Brands';
-import FeaturedProducts from '../components/home/FeaturedProducts';
 import Gallery from '../components/home/Gallery';
 import Statistics from '../components/home/Statistics';
 import CustomerJourney from '../components/home/CustomerJourney';
@@ -26,7 +25,6 @@ export default function Home() {
       <WhyChooseUs />
       <Services />
       <Brands />
-      <FeaturedProducts />
       <Gallery />
       <Statistics />
       <CustomerJourney />
